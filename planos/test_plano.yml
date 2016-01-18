@@ -2,7 +2,7 @@ nombre: test_plano
 
 autor: "Equipo PrefApp"
 
-descripcion: <
+descripcion: >
 
     "Plano de test con un mínimo de configuración para PrefApp::Test"
 
