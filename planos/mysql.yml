@@ -3,32 +3,11 @@ nombre: mysql-servicio
 autor: "Francisco Maseda"
 
 descripcion: >
-
-    "Servicio independiente de mysql montado en un container"
+  
+  "Servicio independiente de mysql montado en un container"
 
 construcciones:
+  
+  app:
 
-    app:
-
-        role: mysql_servicio
-
-        parameters:
-
-            user_password:
-
-                riyic: "dbs/mysql/dbs/@/password"
-
-                user_provided: true
-
-
-            db_name:
-
-                riyic: "dbs/mysql/dbs/@/name"
-
-                user_provided: true
-
-            db_user:
-
-                riyic: "dbs/mysql/dbs/@/user"
-
-                user_provided: true
+  role: mysql_servicio
