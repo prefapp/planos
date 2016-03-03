@@ -31,27 +31,27 @@ construcciones:
 
        # atributos para o panel
       admin_password:
+
         user_provided: 1
 
         riyic:
           name: "app/odoo/installations/[0]/admin_password"
           recipe: "app_odoo::deploy"
   
-        value: "12345lol34"
-
       domain:
+
         user_provided: 1
+
         riyic:
+
           name: "app/odoo/installations/[0]/domain"
           recipe: "app_odoo::deploy"
 
-        value: "default"
       alias:
         user_provided: 1
         riyic:
           name: "app/odoo/installations/[0]/alias"
           recipe: "app_odoo::deploy"
-        value: ""
 
       # atributos seteados no plano
       data_dir:
@@ -86,9 +86,6 @@ construcciones:
         riyic:
           name: "app/odoo/installations/[0]/db_password"
           recipe: "app_odoo::deploy"
-
-        value: "12345lol34"
-
 
   db:
 

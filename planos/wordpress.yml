@@ -1,0 +1,142 @@
+nombre: wordpress
+
+autor: "Francisco y Javier"
+
+version: 0.0
+
+construcciones: 
+
+  app: 
+
+    role: wordpress
+
+    ports:
+
+      - "80:80"
+      - "443:443"
+
+    parameters:
+
+      domain:
+
+        user_provided: 1
+
+        riyic:
+
+          name: "app/wordpress/domain"
+          recipe: "app_wordpress::deploy"
+
+      alias:
+
+        user_provided: 1
+
+        riyic:
+
+          name: "app/wordpress/alias"
+          recipe: "app_wordpress::deploy"
+
+
+      db_name:
+
+        riyic:
+          name: "app/wordpress/db_name"
+          recipe: "app_wordpress::deploy"
+
+        value: "wp_db"
+
+
+      db_user:
+        riyic:
+          name: "app/wordpress/db_user"
+          recipe: "app_wordpress::deploy"
+
+        value: "wp_user"
+
+
+      db_host:
+        riyic:
+          name: "app/wordpress/db_host"
+          recipe: "app_wordpress::deploy"
+
+        value: "db.maseda"
+
+      db_password:
+
+        riyic:
+          name: "app/wordpress/db_password"
+          recipe: "app_wordpress::deploy"
+
+        value: "123qwe//"
+
+  db:
+
+    role: wordpress_db
+
+    command: "/root/start.sh"
+
+    expose: 
+
+      - 3306
+
+    volumes:
+
+      - "/var/lib/mysql/"
+
+    
+    parameters:
+
+      db_name:
+        riyic: 
+
+          name: "dbs/mysql/dbs/[0]/name"
+          recipe: "dbs_mysql::create_db"
+
+        value: "@{app}#{db_name}"
+
+      db_user:
+        riyic: 
+
+          name: "dbs/mysql/dbs/[0]/user"
+          recipe: "dbs_mysql::create_db"
+
+        value: "@{app}#{db_user}"
+
+
+      db_password:
+        riyic: 
+
+          name: "dbs/mysql/dbs/[0]/password"
+          recipe: "dbs_mysql::create_db"
+
+        value: "@{app}#{db_password}"
+      
+      root_password:
+
+        riyic: 
+
+          name: "dbs/mysql/server/root_password"
+          recipe: "dbs_mysql::server"
+
+        value: "9999999999"
+
+      repl_password:
+
+        riyic: 
+
+          name: "dbs/mysql/server/repl_password"
+          recipe: "dbs_mysql::server"
+
+        value: "9999999999"
+
+      debian_password:
+
+        riyic: 
+
+          name: "dbs/mysql/server/debian_password"
+          recipe: "dbs_mysql::server"
+
+        value: "9999999999"
+
+
+
+
