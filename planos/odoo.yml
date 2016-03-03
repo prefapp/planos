@@ -6,139 +6,137 @@ version: 0.0
 
 construcciones: 
 
-    app_data:
+  app_data:
 
-        image: busybox
-    
-        volumes:
-
-            - "@{app}#{data_dir}"    
-
-    app: 
-
-        role: odoo_app
-
-        ports:
-
-            - "80:80"
-            - "443:443"
-
-        volumes_from:
-
-            - app_data
-
-        parameters:
-
-           # atributos para o panel
-            admin_password:
-                user_provided: 1
-
-                riyic:
-                    name: "app/odoo/installations/[0]/admin_password"
-                    recipe: "app_odoo::deploy"
+    image: busybox
   
-                value: "12345lol34"
+    volumes:
 
-            domain:
-                user_provided: 1
-                riyic:
-                    name: "app/odoo/installations/[0]/domain"
-                    recipe: "app_odoo::deploy"
+      - "@{app}#{data_dir}"  
 
-                value: "default"
-            alias:
-                user_provided: 1
-                riyic:
-                    name: "app/odoo/installations/[0]/alias"
-                    recipe: "app_odoo::deploy"
-                value: ""
+  app: 
 
-            # atributos seteados no plano
-            data_dir:
-                riyic:
-                    name: "app/odoo/installations/[0]/data_dir"
-                    recipe: "app_odoo::deploy"
+    role: odoo_app
 
-            db_name:
-                riyic:
-                    name: "app/odoo/installations/[0]/db_name"
-                    recipe: "app_odoo::deploy"
+    ports:
 
-                value: "odoo_db"
+      - "80:80"
+      - "443:443"
 
+    volumes_from:
 
-            db_user:
-                riyic:
-                    name: "app/odoo/installations/[0]/db_user"
-                    recipe: "app_odoo::deploy"
+      - app_data
 
-                value: "odoo_user"
+    parameters:
 
+       # atributos para o panel
+      admin_password:
+        user_provided: 1
 
-            db_host:
-                riyic:
-                    name: "app/odoo/installations/[0]/db_host"
-                    recipe: "app_odoo::deploy"
+        riyic:
+          name: "app/odoo/installations/[0]/admin_password"
+          recipe: "app_odoo::deploy"
+  
+        value: "12345lol34"
 
-                value: "db"
+      domain:
+        user_provided: 1
+        riyic:
+          name: "app/odoo/installations/[0]/domain"
+          recipe: "app_odoo::deploy"
 
-            db_password:
-                riyic:
-                    name: "app/odoo/installations/[0]/db_password"
-                    recipe: "app_odoo::deploy"
+        value: "default"
+      alias:
+        user_provided: 1
+        riyic:
+          name: "app/odoo/installations/[0]/alias"
+          recipe: "app_odoo::deploy"
+        value: ""
 
-                value: "12345lol34"
+      # atributos seteados no plano
+      data_dir:
+        riyic:
+          name: "app/odoo/installations/[0]/data_dir"
+          recipe: "app_odoo::deploy"
 
+      db_name:
+        riyic:
+          name: "app/odoo/installations/[0]/db_name"
+          recipe: "app_odoo::deploy"
 
-    db:
-
-        role: odoo_db
-
-        command: "/root/start.sh"
-
-        expose: 
-
-            - 5432
-
-        volumes:
-
-            - "/var/lib/postgresql/9.3/main"
-
-        
-        parameters:
-
-            db_name:
-                riyic: 
-
-                    name: "dbs/postgresql/dbs/[0]/name"
-                    recipe: "dbs_postresql::create_db"
-
-                value: "@{app}#{db_name}"
-
-            db_user:
-                riyic: 
-
-                    name: "dbs/postgresql/dbs/[0]/user"
-                    recipe: "dbs_postresql::create_db"
-
-                value: "@{app}#{db_user}"
+        value: "odoo_db"
 
 
-            db_password:
-                riyic: 
+      db_user:
+        riyic:
+          name: "app/odoo/installations/[0]/db_user"
+          recipe: "app_odoo::deploy"
 
-                    name: "dbs/postgresql/dbs/[0]/password"
-                    recipe: "dbs_postresql::create_db"
-
-                value: "@{app}#{db_password}"
-            
+        value: "odoo_user"
 
 
-            postgres_password:
+      db_host:
+        riyic:
+          name: "app/odoo/installations/[0]/db_host"
+          recipe: "app_odoo::deploy"
 
-                riyic: 
+        value: "db"
 
-                    name: "dbs/postgresql/server/postgres_password"
-                    recipe: "dbs_postresql::server"
+      db_password:
+        riyic:
+          name: "app/odoo/installations/[0]/db_password"
+          recipe: "app_odoo::deploy"
 
-                value: "9999999999"
+        value: "12345lol34"
+
+
+  db:
+
+    role: odoo_db
+
+    command: "/root/start.sh"
+
+    expose: 
+
+      - 5432
+
+    volumes:
+
+      - "/var/lib/postgresql/9.3/main"
+
+    
+    parameters:
+
+      db_name:
+        riyic: 
+
+          name: "dbs/postgresql/dbs/[0]/name"
+          recipe: "dbs_postresql::create_db"
+
+        value: "@{app}#{db_name}"
+
+      db_user:
+        riyic: 
+
+          name: "dbs/postgresql/dbs/[0]/user"
+          recipe: "dbs_postresql::create_db"
+
+        value: "@{app}#{db_user}"
+
+
+      db_password:
+        riyic: 
+
+          name: "dbs/postgresql/dbs/[0]/password"
+          recipe: "dbs_postresql::create_db"
+
+        value: "@{app}#{db_password}"
+      
+
+      postgres_password:
+        riyic: 
+
+          name: "dbs/postgresql/server/postgres_password"
+          recipe: "dbs_postresql::server"
+
+        value: "9999999999"
