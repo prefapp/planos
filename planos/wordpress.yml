@@ -15,6 +15,10 @@ construcciones:
       - "80:80"
       - "443:443"
 
+    links:
+      
+      - "db:#{db_host}"
+
     parameters:
 
       domain:
@@ -136,7 +140,4 @@ construcciones:
           recipe: "dbs_mysql::server"
 
         value: "9999999999"
-
-
-
 
