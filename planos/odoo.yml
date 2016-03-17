@@ -23,6 +23,9 @@ construcciones:
       - "80:80"
       - "443:443"
 
+    links:
+      - "db:#{db_host}"
+
     volumes_from:
 
       - app_data
