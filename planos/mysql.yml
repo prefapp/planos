@@ -11,7 +11,12 @@ construcciones:
   app:
     
     role: mysql_servicio
+
+    ports:
+      -  "3306:3306"
+
     parameters:
+
       root_password:
         riyic:
           name: dbs/mysql/server/root_password
@@ -23,8 +28,10 @@ construcciones:
           name: dbs/mysql/server/repl_password
           recipe: "dbs_mysql::server"
         value: "123qwe//"
+
       debian_password:
         riyic:
           name: dbs/mysql/server/debian_password
           recipe: "dbs_mysql::server"
         value: "123qwe//"
+
