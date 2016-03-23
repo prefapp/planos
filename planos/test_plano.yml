@@ -12,5 +12,6 @@ construcciones:
 
     web: 
 
-        image: busybox       
+        image: busybox
+        command: "tail -f /dev/null"
 
