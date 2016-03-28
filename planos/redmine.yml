@@ -1,0 +1,11 @@
+nombre: redmine
+
+autor: "Francisco y Javier"
+
+version: 0.0
+
+coming_soon: 1
+
+tags:
+  - ruby
+  - project_management
