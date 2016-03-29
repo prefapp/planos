@@ -4,8 +4,12 @@ autor: "Francisco y Javier"
 
 version: 0.0
 
-descripcion: <
+descripcion: >
   "CMS por excelencia para la creación de blogs o webs de contenidos"
+
+tags:
+  - blog
+  - web
 
 construcciones: 
 
