@@ -4,6 +4,10 @@ autor: "Francisco y Javier"
 
 version: 0.0
 
+descripcion: 
+
+  "Gestor de proyectos open source, para la gestión y planificación de los mismos"
+
 coming_soon: 1
 
 tags:

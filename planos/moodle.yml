@@ -2,6 +2,10 @@ nombre: moodle
 
 autor: "Francisco y Javier"
 
+descripcion: >
+
+  "Plataforma opensource para la gestión de cursos y aprendizaje en linea"
+
 version: 0.0
 
 coming_soon: 1

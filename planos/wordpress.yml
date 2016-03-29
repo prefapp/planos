@@ -4,6 +4,9 @@ autor: "Francisco y Javier"
 
 version: 0.0
 
+descripcion: <
+  "CMS por excelencia para la creación de blogs o webs de contenidos"
+
 construcciones: 
 
   app: 

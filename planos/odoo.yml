@@ -4,6 +4,10 @@ autor: "Francisco y Javier"
 
 version: 0.0
 
+descripcion: >
+  "Sistema ERP open-source muy flexible para la gestión de tu empresa o negocio"
+
+
 construcciones: 
 
   app_data:
