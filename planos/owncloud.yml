@@ -1,0 +1,16 @@
+nombre: redmine
+
+autor: "Francisco y Javier"
+
+version: 0.0
+
+descripcion: 
+
+  "Alternativa abierta para compartir archivos a través de internet de manera segura y confiable"
+
+coming_soon: 1
+
+tags:
+  - dropbox
+  - files
+  - contacts
