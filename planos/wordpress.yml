@@ -73,7 +73,7 @@ construcciones:
           name: "app/wordpress/db_password"
           recipe: "app_wordpress::deploy"
 
-        value: "123qwe//"
+        value: "passw0rd"
 
   db:
 
@@ -124,23 +124,5 @@ construcciones:
           name: "dbs/mysql/server/root_password"
           recipe: "dbs_mysql::server"
 
-        value: "9999999999"
-
-      repl_password:
-
-        riyic: 
-
-          name: "dbs/mysql/server/repl_password"
-          recipe: "dbs_mysql::server"
-
-        value: "9999999999"
-
-      debian_password:
-
-        riyic: 
-
-          name: "dbs/mysql/server/debian_password"
-          recipe: "dbs_mysql::server"
-
-        value: "9999999999"
+        value: "password"
 
