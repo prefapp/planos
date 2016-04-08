@@ -21,17 +21,5 @@ construcciones:
         riyic:
           name: dbs/mysql/server/root_password
           recipe: "dbs_mysql::server"
-        value: "123qwe//"
-
-      repl_password:
-        riyic:
-          name: dbs/mysql/server/repl_password
-          recipe: "dbs_mysql::server"
-        value: "123qwe//"
-
-      debian_password:
-        riyic:
-          name: dbs/mysql/server/debian_password
-          recipe: "dbs_mysql::server"
-        value: "123qwe//"
+        value: "passw0rd"
 
