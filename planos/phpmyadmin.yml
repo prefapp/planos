@@ -1,0 +1,33 @@
+nombre: phpmyadmin
+
+autor: "Francisco y Javier"
+
+version: 0.0
+
+descripcion: "phpMyAdmin (imagen oficial) para usar con un servidor mysql arbitrario"
+
+construcciones: 
+
+    phpmyadmin:
+
+        image: "phpmyadmin/phpmyadmin"
+
+        ports:
+            - "#{puerto}:80"
+
+        enviroment:
+        
+            PMA_ARBITRARY: 1
+
+        parameters:
+
+            puerto:
+
+                variable: 
+    
+                    display_name: "puerto phpadmin"
+
+                user_provided: 1
+
+                valor: 8080
+
