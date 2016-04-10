@@ -1,0 +1,73 @@
+nombre: minecraft
+
+autor: "Francisco <frmadem@prefapp.es>"
+
+version: 0.0
+
+descripcion: "Minecraft Forge"
+
+construcciones: 
+
+    minecraft-data:
+
+       image: busybox
+
+    minecraft:
+
+        image: "webhippie/minecraft-forge:#{version}"
+
+        ports:
+            - "#{puerto}:25565"
+
+        volumes_from: 
+    
+            - minecraft-data
+
+        #enviroment:
+
+        #    SERVER_MAXHEAP: "#{server_max_heap}"
+        #    SERVER_MINHEAP: "#{server_min_heap}"
+        #    SERVER_MAXPERM: "#{server_max_perm}"
+        #
+        parameters:
+
+            puerto:
+
+                variable: 
+    
+                    display_name: "puerto del minecraft"
+
+                    validations:
+
+                      regexp: "^\d+$"
+
+                user_provided: 1
+
+                valor: 8080
+
+            version: 
+
+                variable: 
+
+                  display_name: "versión a usar de minecraft"
+
+                  validations:
+
+                    fixed_values:
+
+                      - "latest"
+                      - "11.14.3"
+                      - "11.14.2"
+                      - "11.14.1"
+                      - "11.14.0"
+                      - "10.13.4"
+                      - "10.13.3"
+                      - "10.13.2"
+
+                  field_type: "radio"
+
+
+                valor: "latest"
+    
+                user_provided: 1
+        
