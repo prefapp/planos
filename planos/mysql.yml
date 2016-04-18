@@ -22,4 +22,5 @@ construcciones:
           name: dbs/mysql/server/root_password
           recipe: "dbs_mysql::server"
         value: "passw0rd"
+        user_provided: 1
 
