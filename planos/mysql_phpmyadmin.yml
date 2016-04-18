@@ -30,6 +30,7 @@ construcciones:
 
                     display_name: "Password root mysql"
 
+                valor: "qwe123qwe"
                 user_provided: 1    
 
             puerto:
@@ -38,6 +39,7 @@ construcciones:
 
                     display_name: "puerto mysql"
 
+                valor: 3306
                 user_provided: 1
 
     phpmyadmin:
@@ -58,6 +60,7 @@ construcciones:
     
                     display_name: "puerto phpadmin"
 
+                valor: 80
                 user_provided: 1
     
                 
