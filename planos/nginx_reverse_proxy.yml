@@ -1,0 +1,17 @@
+nombre: nginx_ssl_proxy
+
+autor: "Javier <jgomez@prefapp.in>"
+
+descripcion: >
+
+  "Proxy inverso para servir un sitio web por ssl"
+
+version: 0.0
+
+coming_soon: 1
+
+category: services
+
+tags: 
+  - https
+  - web
