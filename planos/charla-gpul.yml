@@ -1,0 +1,42 @@
+nombre: charla-gpul
+
+autor: "Javier G. <jgomez@prefapp.in>"
+
+descripcion: >
+
+  "Servicio ssh con acceso por key para un usuario root y docker-engine instalado"
+
+version: 0.0
+
+coming_soon: 1
+
+category: services
+
+construcciones:
+  ssh:
+
+    role: sshd_y_docker
+
+    ports:
+      - "22:22"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    parameters:
+      username:
+        default: root
+        user_provided: 1
+        riyic:
+          name: "system/users/bash/@/username"
+          recipe: "system_user::with_bash"
+
+      ssh_keys:
+        user_provided: 1
+        default: []
+        riyic:
+          name: "system/users/bash/@/ssh_keys"
+          recipe: "system_user::with_bash"
+
+
+
