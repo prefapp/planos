@@ -1,8 +1,8 @@
-nombre: wordpress-test
+nombre: wordpress
 
 autor: "Equipo PrefApp"
 
-version: 0.1
+version: 0.0
 
 descripcion: >
   "CMS por excelencia para la creación de blogs o webs de contenidos"
@@ -21,10 +21,6 @@ construcciones:
 
       - "80:80"
       - "443:443"
-
-    volumes:
-
-      - "#{target_path}/wp-content"
 
     links:
       
@@ -48,14 +44,6 @@ construcciones:
         riyic:
 
           name: "app/wordpress/alias"
-          recipe: "app_wordpress::deploy"
-
-      # 
-      # a partir de aqui xa non son user_provided
-      #
-      target_path:
-        riyic:
-          name: "app/wordpress/target_path"
           recipe: "app_wordpress::deploy"
 
 
