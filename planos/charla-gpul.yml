@@ -22,7 +22,7 @@ construcciones:
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /root:/root
+        #- /root:/root
 
     parameters:
       username:
