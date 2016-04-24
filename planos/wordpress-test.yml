@@ -1,0 +1,144 @@
+nombre: wordpress-test
+
+autor: "Equipo PrefApp"
+
+version: 0.1
+
+descripcion: >
+  "CMS por excelencia para la creación de blogs o webs de contenidos"
+
+tags:
+  - blog
+  - web
+
+construcciones: 
+
+  app: 
+
+    role: wordpress
+
+    ports:
+
+      - "80:80"
+      - "443:443"
+
+    volumes:
+
+      - "#{target_path}/wp-content"
+
+    links:
+      
+      - "db:#{db_host}"
+
+    parameters:
+
+      domain:
+
+        user_provided: 1
+
+        riyic:
+
+          name: "app/wordpress/domain"
+          recipe: "app_wordpress::deploy"
+
+      alias:
+
+        user_provided: 1
+
+        riyic:
+
+          name: "app/wordpress/alias"
+          recipe: "app_wordpress::deploy"
+
+      # 
+      # a partir de aqui xa non son user_provided
+      #
+      target_path:
+        riyic:
+          name: "app/wordpress/target_path"
+          recipe: "app_wordpress::deploy"
+
+
+      db_name:
+
+        riyic:
+          name: "app/wordpress/db_name"
+          recipe: "app_wordpress::deploy"
+
+        value: "wp_db"
+
+
+      db_user:
+        riyic:
+          name: "app/wordpress/db_user"
+          recipe: "app_wordpress::deploy"
+
+        value: "wp_user"
+
+
+      db_host:
+        riyic:
+          name: "app/wordpress/db_host"
+          recipe: "app_wordpress::deploy"
+
+        value: "db.maseda"
+
+      db_password:
+
+        riyic:
+          name: "app/wordpress/db_password"
+          recipe: "app_wordpress::deploy"
+
+        value: "passw0rd"
+
+  db:
+
+    role: wordpress_db
+
+    command: "/root/start.sh"
+
+    expose: 
+
+      - 3306
+
+    volumes:
+
+      - "/var/lib/mysql/"
+
+    
+    parameters:
+
+      db_name:
+        riyic: 
+
+          name: "dbs/mysql/dbs/[0]/name"
+          recipe: "dbs_mysql::create_db"
+
+        value: "@{app}#{db_name}"
+
+      db_user:
+        riyic: 
+
+          name: "dbs/mysql/dbs/[0]/user"
+          recipe: "dbs_mysql::create_db"
+
+        value: "@{app}#{db_user}"
+
+
+      db_password:
+        riyic: 
+
+          name: "dbs/mysql/dbs/[0]/password"
+          recipe: "dbs_mysql::create_db"
+
+        value: "@{app}#{db_password}"
+      
+      root_password:
+
+        riyic: 
+
+          name: "dbs/mysql/server/root_password"
+          recipe: "dbs_mysql::server"
+
+        value: "password"
+
