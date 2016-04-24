@@ -66,7 +66,7 @@ construcciones:
                       - "10.13.3"
                       - "10.13.2"
 
-                  field_type: "radio"
+                  field_type: "text"
 
 
                 valor: "latest"
