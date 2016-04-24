@@ -6,6 +6,8 @@ version: 0.0
 
 descripcion: "Minecraft Forge"
 
+coming_soon: 1
+
 construcciones: 
 
     minecraft-data:
