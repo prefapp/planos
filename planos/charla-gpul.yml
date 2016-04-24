@@ -18,7 +18,7 @@ construcciones:
     role: sshd_y_docker
 
     ports:
-      - "22:22"
+      - "2222:22"
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
