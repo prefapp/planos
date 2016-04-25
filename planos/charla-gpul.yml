@@ -24,6 +24,9 @@ construcciones:
       - /var/run/docker.sock:/var/run/docker.sock
         #- /root:/root
 
+    env:
+      TERM: "xterm"
+
     parameters:
       username:
         default: root
