@@ -1,0 +1,51 @@
+nombre: etherpad
+
+autor: "Francisco <fmaseda@prefapp.in>"
+
+descripcion: >
+
+  "Etherpad Lite"
+
+version: 0.0
+
+category: services
+
+tags: 
+  - https
+  - web
+
+construcciones:
+
+  ether:
+
+    image:  indiehosters/etherpad
+
+    ports:
+
+      - "80:9001"
+
+    links:
+
+      - "ep_mysql:mysql"
+
+    environment:
+
+      MYSQL_ROOT_PASSWORD: "@{mysql}#{db_password}"
+
+
+  mysql:
+
+    environment:
+
+      MYSQL_ROOT_PASSWORD:  "#{db_password}"
+
+
+    parameters:
+
+      db_password:
+
+        variable:
+
+          valor: "qwe123qwe"
+
+
