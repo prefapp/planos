@@ -44,8 +44,8 @@ construcciones:
 
       db_password:
 
-        variable:
+        constante: 1
 
-          valor: "qwe123qwe"
+        valor: "qwe123qwe"
 
 
