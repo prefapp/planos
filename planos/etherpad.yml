@@ -8,7 +8,9 @@ descripcion: >
 
 version: 0.0
 
-category: services
+category: application
+
+uso_interno: 1
 
 tags: 
   - https
