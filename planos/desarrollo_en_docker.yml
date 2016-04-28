@@ -1,0 +1,43 @@
+nombre: desarrollo_en_docker
+
+autor: "Javier G. <jgomez@prefapp.in>"
+
+descripcion: >
+
+  "Servicio ssh con acceso por key para un usuario"
+
+version: 0.0
+
+uso_interno: 1
+
+category: services
+
+construcciones:
+  ssh:
+
+    role: sshd_y_docker
+
+    ports:
+      - "2222:22"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home:/home
+
+    parameters:
+      username:
+        default: root
+        user_provided: 1
+        riyic:
+          name: "system/users/bash/[0]/username"
+          recipe: "system_user::with_bash"
+
+      ssh_keys:
+        user_provided: 1
+        default: []
+        riyic:
+          name: "system/users/bash/[0]/ssh_keys"
+          recipe: "system_user::with_bash"
+
+
+
