@@ -4,7 +4,7 @@ autor: "Javier G. <jgomez@prefapp.in>"
 
 descripcion: >
 
-  "Servicio ssh con acceso por key para un usuario"
+  "Servicio ssh con acceso con key para un usuario, e conexion co host de docker"
 
 version: 0.0
 
@@ -18,7 +18,7 @@ construcciones:
     role: sshd_y_docker
 
     ports:
-      - "2222:22"
+      - "#{ssh_port}:22"
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -38,6 +38,18 @@ construcciones:
         riyic:
           name: "system/users/bash/[0]/ssh_keys"
           recipe: "system_user::with_bash"
+
+      ssh_port:
+        user_provided: 1
+        valor: 2222
+        default: 2222
+        variable:
+          display_name: "Ssh connection port"
+          field_type: "text"
+          validations: 
+            regexp: "\d+"
+          required: 1
+
 
 
 
