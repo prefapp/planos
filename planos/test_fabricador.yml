@@ -1,0 +1,17 @@
+nombre: test_fabricador
+
+autor: "Equipo PrefApp"
+
+descripcion: >
+
+    "Plano de test con un rol para pruebas"
+
+uso_interno: 1
+
+construcciones:
+
+    app: 
+
+        role: test_fabricador
+        command: "tail -f /dev/null"
+
