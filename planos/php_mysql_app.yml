@@ -43,74 +43,74 @@ construcciones:
       data_dir:
         variable:
           display_name: "Directory where app stores data"
-          validations:
-            predefined: 'unix_path' 
+          #validations:
+            #predefined: 'unix_path' 
           field_type: text
         user_provided: 1
 
       repo_url:
         riyic:
-          name: "app/php/fcgi_app/[0]/repo_url"
+          name: "app/php/fcgi_apps/[0]/repo_url"
           recipe: "app_php::fcgi_app"
         user_provided: 1
 
       repo_type:
         riyic:
-          name: "app/php/fcgi_app/[0]/repo_type"
+          name: "app/php/fcgi_apps/[0]/repo_type"
           recipe: "app_php::fcgi_app"
         value: "git"
         user_provided: 1
 
       revision:
         riyic:
-          name: "app/php/fcgi_app/[0]/revision"
+          name: "app/php/fcgi_apps/[0]/revision"
           recipe: "app_php::fcgi_app"
         value: "HEAD"
         user_provided: 1
 
       credential:
         riyic:
-          name: "app/php/fcgi_app/[0]/credential"
+          name: "app/php/fcgi_apps/[0]/credential"
           recipe: "app_php::fcgi_app"
         value: xxx
         user_provided: 1
 
       extra_packages:
         riyic:
-          name: "app/php/fcgi_app/[0]/extra_packages"
+          name: "app/php/fcgi_apps/[0]/extra_packages"
           recipe: "app_php::fcgi_app"
         value: []
         user_provided: 1
 
       extra_modules:
         riyic:
-          name: "app/php/fcgi_app/[0]/extra_modules"
+          name: "app/php/fcgi_apps/[0]/extra_modules"
           recipe: "app_php::fcgi_app"
         value: []
         user_provided: 1
 
       timeout:
         riyic:
-          name: "app/php/fcgi_app/[0]/timeout"
+          name: "app/php/fcgi_apps/[0]/timeout"
           recipe: "app_php::fcgi_app"
         value: 300
         user_provided: 1
     
       php_ini_admin_values:
         riyic:
-          name: "app/php/fcgi_app/[0]/php_ini_admin_values"
+          name: "app/php/fcgi_apps/[0]/php_ini_admin_values"
           recipe: "app_php::fcgi_app"
         user_provided: 1
 
       postdeploy_script:
         riyic:
-          name: "app/php/fcgi_app/[0]/postdeploy_script"
+          name: "app/php/fcgi_apps/[0]/postdeploy_script"
           recipe: "app_php::fcgi_app"
         user_provided: 1
 
       migration_command:
         riyic:
-          name: "app/php/fcgi_app/[0]/migration_command"
+          name: "app/php/fcgi_apps/[0]/migration_command"
           recipe: "app_php::fcgi_app"
         user_provided: 1
 
@@ -118,13 +118,13 @@ construcciones:
       # automatic definition in template
       domain:
         riyic:
-          name: "app/php/fcgi_app/[0]/domain"
+          name: "app/php/fcgi_apps/[0]/domain"
           recipe: "app_php::fcgi_app"
         value: "default"
       
       target_path:
         riyic:
-          name: "app/php/fcgi_app/[0]/target_path"
+          name: "app/php/fcgi_apps/[0]/target_path"
           recipe: "app_php::fcgi_app"
         value: "/home/app"
 
