@@ -9,6 +9,7 @@ descripcion: >
 version: 0.0
 
 coming_soon: 0
+
 uso_interno: 1
 
 category: services
@@ -24,7 +25,6 @@ construcciones:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home:/home
-        #- /root:/root
 
     parameters:
       username:
@@ -40,6 +40,3 @@ construcciones:
         riyic:
           name: "system/users/bash/[0]/ssh_keys"
           recipe: "system_user::with_bash"
-
-
-

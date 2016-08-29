@@ -56,10 +56,10 @@ construcciones:
     environment:
 
       ETHERPAD_TITLE: "#{title}"
-    ­ ETHERPAD_ADMIN_USER: "#{admin_user}"
-    ­ ETHERPAD_ADMIN_PASSWORD: "#{admin_password}"
-    ­ ETHERPAD_DB_PASSWORD: "@{mysql}#{db_password}"
-    ­ ETHERPAD_DB_USER: root
+      ETHERPAD_ADMIN_USER: "#{admin_user}"
+      ETHERPAD_ADMIN_PASSWORD: "#{admin_password}"
+      ETHERPAD_DB_PASSWORD: "@{mysql}#{db_password}"
+      ETHERPAD_DB_USER: root
 
 
   mysql:
