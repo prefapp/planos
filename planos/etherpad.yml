@@ -22,7 +22,7 @@ construcciones:
 
     image: "tvelocity/etherpad-lite"
 
-    command: 
+    entrypoint: 
       - bash 
       - -c 
       - "sleep 20 && /entrypoint.sh && bin/run.sh root"
