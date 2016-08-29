@@ -18,9 +18,11 @@ tags:
 
 construcciones:
 
-  ether:
+  etherpad:
 
-    image:  indiehosters/etherpad
+    image: "tvelocity/etherpad-lite"
+
+    entrypoint: bash -c "sleep 20 && /entrypoint.sh && bin/run.sh root"
 
     ports:
 
@@ -30,9 +32,34 @@ construcciones:
 
       - "mysql:mysql"
 
+    parameters:
+      title:
+        variable:
+          display_name: "Etherpad site title"
+        valor: "Etherpad"
+        user_provided: 1
+      
+      admin_user:
+        variable:
+          display_name: "Admin user"
+
+        valor: "admin"
+        user_provided: 1
+
+      admin_password:
+        variable:
+          display_name: "Admin password"
+        valor: "admin"
+        user_provided: 1
+    
+
     environment:
 
-      MYSQL_ROOT_PASSWORD: "@{mysql}#{db_password}"
+      ETHERPAD_TITLE: "#{title}"
+    ­ ETHERPAD_ADMIN_USER: "#{admin_user}"
+    ­ ETHERPAD_ADMIN_PASSWORD: "#{admin_password}"
+    ­ ETHERPAD_DB_PASSWORD: "@{mysql}#{db_password}"
+    ­ ETHERPAD_DB_USER: root
 
 
   mysql:
