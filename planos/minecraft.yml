@@ -41,7 +41,7 @@ construcciones:
 
                     validations:
 
-                      regexp: "^\d+$"
+                      regexp: '^\d+$'
 
                 user_provided: 1
 

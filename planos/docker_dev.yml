@@ -46,10 +46,6 @@ construcciones:
         variable:
           display_name: "Ssh connection port"
           field_type: "text"
-          validations: 
-            regexp: "\d+"
+          validations:
+            regexp: '\d+'
           required: 1
-
-
-
-
