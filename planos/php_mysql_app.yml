@@ -10,13 +10,15 @@ descripcion: >
 
 coming_soon: 1
 
+category: development
+
 tags:
   - lamp
   - php
   - mysql
   - web
 
-construcciones: 
+construcciones:
 
   app_data:
     image: busybox
@@ -24,7 +26,7 @@ construcciones:
       - /var/log
       - "@{app}#{data_dir}"
 
-  app: 
+  app:
     role: app_php
 
     command: "/root/start.sh"
@@ -43,8 +45,8 @@ construcciones:
       data_dir:
         variable:
           display_name: "Directory where app stores data"
-          #validations:
-            #predefined: 'unix_path' 
+          validations:
+            predefined: 'unix_path'
           field_type: text
         user_provided: 1
 
@@ -95,7 +97,7 @@ construcciones:
           recipe: "app_php::fcgi_app"
         value: 300
         user_provided: 1
-    
+
       php_ini_admin_values:
         riyic:
           name: "app/php/fcgi_apps/[0]/php_ini_admin_values"
@@ -121,12 +123,13 @@ construcciones:
           name: "app/php/fcgi_apps/[0]/domain"
           recipe: "app_php::fcgi_app"
         value: "default"
-      
+
       target_path:
         riyic:
           name: "app/php/fcgi_apps/[0]/target_path"
           recipe: "app_php::fcgi_app"
         value: "/home/app"
+        user_provided: 1
 
       db_host:
         value: "mysql"
@@ -139,7 +142,7 @@ construcciones:
 
     command: "/root/start.sh"
 
-    expose: 
+    expose:
 
       - 3306
 
@@ -148,27 +151,30 @@ construcciones:
 
     parameters:
 
-      db_user:
+      user:
         riyic:
           name: "dbs/mysql/dbs/[0]/user"
           recipe: "dbs_mysql::create_db"
         value: "dbuser"
+        user_provided: 1
 
-      db_name:
-        riyic: 
+      name:
+        riyic:
           name: "dbs/mysql/dbs/[0]/name"
           recipe: "dbs_mysql::create_db"
         value: "dbname"
+        user_provided: 1
 
 
-      db_password:
+      password:
         riyic:
           name: "dbs/mysql/dbs/[0]/password"
           recipe: "dbs_mysql::create_db"
-        value: '09873246ccvw4w¡¡'
+        value: 'passw0rd'
+        user_provided: 1
 
       root_password:
-        riyic: 
+        riyic:
           name: "dbs/mysql/server/root_password"
           recipe: "dbs_mysql::server"
         value: '09Dx329ksx&x23116d'
