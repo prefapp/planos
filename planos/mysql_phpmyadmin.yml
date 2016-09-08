@@ -29,6 +29,8 @@ construcciones:
                 variable: 
 
                     display_name: "Password root mysql"
+                    validations:
+                      predefined: 'mysql_dbpassword'
 
                 valor: "qwe123qwe"
                 user_provided: 1    
@@ -38,6 +40,8 @@ construcciones:
                 variable: 
 
                     display_name: "puerto mysql"
+                    validations:
+                      predefined: 'tcp_port'
 
                 valor: 3306
                 user_provided: 1
@@ -57,8 +61,11 @@ construcciones:
             puerto:
 
                 variable: 
-    
+                    
                     display_name: "puerto phpadmin"
+
+                    validations:
+                      predefined: 'tcp_port'
 
                 valor: 80
                 user_provided: 1

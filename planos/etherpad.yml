@@ -1,6 +1,6 @@
 nombre: etherpad
 
-autor: "Francisco <fmaseda@prefapp.in>"
+autor: "Equipo Prefapp <info@prefapp.in>"
 
 descripcion: >
 
@@ -9,8 +9,6 @@ descripcion: >
 version: 0.0
 
 category: application
-
-uso_interno: 1
 
 tags: 
   - https
@@ -38,12 +36,16 @@ construcciones:
       title:
         variable:
           display_name: "Etherpad site title"
+          validations:
+            predefined: 'text'
         valor: "Etherpad"
         user_provided: 1
       
       admin_user:
         variable:
           display_name: "Admin user"
+          validations:
+            predefined: 'username'
 
         valor: "admin"
         user_provided: 1
@@ -51,6 +53,8 @@ construcciones:
       admin_password:
         variable:
           display_name: "Admin password"
+          validations:
+            predefined: 'password'
         valor: "admin"
         user_provided: 1
     

@@ -26,6 +26,8 @@ construcciones:
                 variable: 
     
                     display_name: "puerto phpadmin"
+                    validations:
+                      predefined: 'tcp_port'
 
                 user_provided: 1
 
