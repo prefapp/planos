@@ -28,6 +28,7 @@ construcciones:
       - "@{app}#{data_dir}"
 
   app:
+
     role: app_ruby
 
     command: "/root/start.sh"
@@ -210,4 +211,4 @@ construcciones:
         riyic:
           name: "dbs/mysql/server/root_password"
           recipe: "dbs_mysql::server"
-        value: '1aM€jorSa1sa'
+        value: '1aMajorSa1sa'
