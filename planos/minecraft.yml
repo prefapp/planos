@@ -20,7 +20,7 @@ construcciones:
          
     minecraft:
 
-        image: "webhippie/minecraft-forge:#{version}"
+        image: "itzg/minecraft-server"
 
         ports:
             - "#{puerto}:25565"
@@ -121,6 +121,12 @@ construcciones:
 
                     - true
                     - false
+               
+
+                valor: true
+
+                user_provided: 1
+
 
             whitelist:
 
@@ -129,6 +135,8 @@ construcciones:
                 display_name: "Whitelist de jugadores (username separados por comas)"
 
                 field_type: "text" 
+
+                user_provided: 1
 
             max_jugadores:
 
@@ -144,4 +152,5 @@ construcciones:
   
                   regexp: '^\d+$'
 
+                user_provided: 1
 
