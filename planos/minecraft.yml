@@ -100,7 +100,11 @@ construcciones:
             display_name: "Whitelist de jugadores (username separados por comas)"
   
             field_type: "text" 
-  
+
+            validations:
+
+              predefined: "text" 
+ 
           user_provided: 1
   
         max_jugadores:
@@ -113,7 +117,7 @@ construcciones:
   
             validations:
   
-              regexp: '^\d+$'
+              predefined: "int"
   
           user_provided: 1
   
