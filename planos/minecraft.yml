@@ -47,11 +47,11 @@ construcciones:
   
                 validations:
   
-                  regexp: '^\d+$'
+                  predefined: 'tcp_port'
   
             user_provided: 1
   
-            valor: 8080
+            valor: 25565
   
         online:
   
