@@ -12,8 +12,12 @@ construcciones:
 
     minecraft-data:
 
-       image: busybox
+      image: busybox
 
+      volumes:
+        
+        - /data
+         
     minecraft:
 
         image: "webhippie/minecraft-forge:#{version}"
@@ -23,8 +27,18 @@ construcciones:
 
         volumes_from: 
     
-            - minecraft-data
+          - minecraft-data
 
+        enviroment:
+          
+          ONLINE_MODE: "#{online}"
+
+          EULA: "#{eula}"
+
+          MAX_TICK_TIME: -1 
+
+          MAX_PLAYERS: "#{max_jugadores}"
+     
         #enviroment:
 
         #    SERVER_MAXHEAP: "#{server_max_heap}"
@@ -72,4 +86,62 @@ construcciones:
                 valor: "latest"
     
                 user_provided: 1
+
+
+            online:
+
+              variable:
+
+                display_name: "Comprobar credenciales de usuario"
+
+                field_type: "radio"
+
+                validations:
+
+                  fixed_values: 
+
+                    - TRUE
+                    - FALSE
+
+                user_provided: 1
+
+                valor: TRUE
         
+            eula:
+
+              variable: 
+
+                display_name: "Aceptar términos del EULA"
+
+                field_type: "radio"
+
+                validations: 
+
+                  fixed_values:
+
+                    - true
+                    - false
+
+            whitelist:
+
+              variable:
+
+                display_name: "Whitelist de jugadores (username separados por comas)"
+
+                field_type: "text" 
+
+            max_jugadores:
+
+              variable:
+
+                display_name: "Máximo de jugadores"
+
+                field_type: "text"
+
+                valor: 20
+
+                validations:
+  
+                  regexp: '^\d+$'
+
+
