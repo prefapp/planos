@@ -54,8 +54,8 @@ construcciones:
         variable:
           display_name: "Admin password"
           validations:
-            predefined: 'NoH@y@mo2pheo'
-        valor: "admin"
+            predefined: 'password'
+        valor: "@y@mo2pheo"
         user_provided: 1
     
 
