@@ -10,147 +10,111 @@ coming_soon: 1
 
 construcciones: 
 
-    minecraft-data:
-
-      image: busybox
-
-      volumes:
-        
-        - /data
-         
-    minecraft:
-
-        image: "itzg/minecraft-server"
-
-        ports:
-            - "#{puerto}:25565"
-
-        volumes_from: 
-    
-          - minecraft-data
-
-        enviroment:
-          
-          ONLINE_MODE: "#{online}"
-
-          EULA: "#{eula}"
-
-          MAX_TICK_TIME: -1 
-
-          MAX_PLAYERS: "#{max_jugadores}"
-     
-        #enviroment:
-
-        #    SERVER_MAXHEAP: "#{server_max_heap}"
-        #    SERVER_MINHEAP: "#{server_min_heap}"
-        #    SERVER_MAXPERM: "#{server_max_perm}"
-        #
-        parameters:
-
-            puerto:
-
-                variable: 
-    
-                    display_name: "puerto del minecraft"
-
-                    validations:
-
-                      regexp: '^\d+$'
-
-                user_provided: 1
-
-                valor: 8080
-
-            version: 
-
-                variable: 
-
-                  display_name: "versión a usar de minecraft"
-
-                  validations:
-
-                    fixed_values:
-
-                      - "latest"
-                      - "11.14.3"
-                      - "11.14.2"
-                      - "11.14.1"
-                      - "11.14.0"
-                      - "10.13.4"
-                      - "10.13.3"
-                      - "10.13.2"
-
-                  field_type: "text"
-
-
-                valor: "latest"
-    
-                user_provided: 1
-
-
-            online:
-
-              variable:
-
-                display_name: "Comprobar credenciales de usuario"
-
-                field_type: "radio"
-
-                validations:
-
-                  fixed_values: 
-
-                    - TRUE
-                    - FALSE
-
-                user_provided: 1
-
-                valor: TRUE
-        
-            eula:
-
-              variable: 
-
-                display_name: "Aceptar términos del EULA"
-
-                field_type: "radio"
-
-                validations: 
-
-                  fixed_values:
-
-                    - true
-                    - false
-               
-
-                valor: true
-
-                user_provided: 1
-
-
-            whitelist:
-
-              variable:
-
-                display_name: "Whitelist de jugadores (username separados por comas)"
-
-                field_type: "text" 
-
-                user_provided: 1
-
-            max_jugadores:
-
-              variable:
-
-                display_name: "Máximo de jugadores"
-
-                field_type: "text"
-
-                valor: 20
-
+  minecraft-data:
+  
+    image: busybox
+  
+    volumes:
+      
+      - /data
+       
+  minecraft:
+  
+    image: "itzg/minecraft-server"
+  
+    ports:
+  
+      - "#{puerto}:25565"
+  
+    volumes_from: 
+  
+      - minecraft-data
+  
+    environment:
+      
+      ONLINE_MODE: "#{online}"
+      EULA: "#{eula}"
+      MAX_TICK_TIME: -1 
+      MAX_PLAYERS: "#{max_jugadores}"
+   
+    parameters:
+  
+        puerto:
+  
+            variable: 
+  
+                display_name: "puerto del minecraft"
+  
                 validations:
   
                   regexp: '^\d+$'
-
-                user_provided: 1
-
+  
+            user_provided: 1
+  
+            valor: 8080
+  
+        online:
+  
+          variable:
+  
+            display_name: "Comprobar credenciales de usuario"
+  
+            field_type: "radio"
+  
+            validations:
+  
+              fixed_values: 
+  
+                - TRUE
+                - FALSE
+  
+          user_provided: 1
+  
+          valor: TRUE
+    
+        eula:
+  
+          variable: 
+  
+            display_name: "Aceptar términos del EULA"
+  
+            field_type: "radio"
+  
+            validations: 
+  
+              fixed_values:
+  
+                - true
+                - false
+           
+  
+          valor: true
+  
+          user_provided: 1
+  
+  
+        whitelist:
+  
+          variable:
+  
+            display_name: "Whitelist de jugadores (username separados por comas)"
+  
+            field_type: "text" 
+  
+          user_provided: 1
+  
+        max_jugadores:
+  
+          variable:
+  
+            display_name: "Máximo de jugadores"
+  
+            field_type: "text"
+  
+            validations:
+  
+              regexp: '^\d+$'
+  
+          user_provided: 1
+  
+          valor: 20
