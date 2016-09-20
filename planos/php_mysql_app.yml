@@ -137,42 +137,42 @@ construcciones:
 
 
   db:
-
+    
     role: mysql_db
-
+    
     command: "/root/start.sh"
-
+    
     expose:
-
+    
       - 3306
-
+    
     volumes:
       - /var/lib/mysql
-
+    
     parameters:
-
+    
       user:
         riyic:
           name: "dbs/mysql/dbs/[0]/user"
           recipe: "dbs_mysql::create_db"
         value: "dbuser"
         user_provided: 1
-
+    
       name:
         riyic:
           name: "dbs/mysql/dbs/[0]/name"
           recipe: "dbs_mysql::create_db"
         value: "dbname"
         user_provided: 1
-
-
+    
+    
       password:
         riyic:
           name: "dbs/mysql/dbs/[0]/password"
           recipe: "dbs_mysql::create_db"
         value: 'passw0rd'
         user_provided: 1
-
+    
       root_password:
         riyic:
           name: "dbs/mysql/server/root_password"
