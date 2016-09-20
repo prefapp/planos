@@ -4,7 +4,7 @@ autor: "Javier G. <jgomez@prefapp.in>"
 
 descripcion: >
 
-  "Servicio ssh con acceso por key para un usuario root y docker-engine instalado"
+  Servicio ssh con acceso por key para un usuario root y docker-engine instalado
 
 version: 0.0
 

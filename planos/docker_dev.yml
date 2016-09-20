@@ -4,7 +4,7 @@ autor: "Javier G. <jgomez@prefapp.in>"
 
 descripcion: >
 
-  "Servicio ssh con acceso con key para un usuario, e conexion co host de docker"
+  Servicio ssh con acceso con key para un usuario, e conexion co host de docker
 
 version: 0.0
 

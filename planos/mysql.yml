@@ -4,7 +4,7 @@ autor: "Equipo PrefApp"
 
 descripcion: >
   
-  "Servicio independiente de Mysql montado en un container"
+  Servicio independiente de Mysql montado en un container
 
 construcciones:
   
