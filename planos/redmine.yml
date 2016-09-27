@@ -13,3 +13,33 @@ coming_soon: 1
 tags:
   - ruby
   - project_management
+
+construcciones:
+
+  app:
+
+    role: redmine
+
+    links:
+      - "db:db.host"
+
+    parameters:
+
+      admin_password:
+        riyic:
+          name: "app/redmine/adminpass"
+          recipe: "app_redmine:deploy"
+
+        user_provided: 1
+
+      redmine_version:
+
+        riyic:
+          name: "app/redmine/revision"
+          recipe: "app_redmine:deploy"
+
+        user_provided: 1
+
+  db:
+
+    from: mysql_db_riyic:0.1@db 
