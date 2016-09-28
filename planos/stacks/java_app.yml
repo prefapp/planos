@@ -1,0 +1,16 @@
+nombre: java_app
+
+autor: "Equipo PrefApp <info@prefapp.in>"
+
+version: 0.1
+
+descripcion: >
+
+  Stack web java sobre glassfish
+
+coming_soon: 1
+category: stacks
+tags:
+  - app
+  - web
+  - java

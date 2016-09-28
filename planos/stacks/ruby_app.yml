@@ -6,7 +6,7 @@ version: 0.1
 
 descripcion: >
 
-  Aplicacion web ruby sobre nginx y passenger
+  Stack web ruby sobre nginx y passenger
 
 coming_soon: 1
 beta: 1

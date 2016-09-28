@@ -1,0 +1,16 @@
+nombre: nodejs_app
+
+autor: "Equipo PrefApp <info@prefapp.in>"
+
+version: 0.1
+
+descripcion: >
+
+  Stack básica de una app nodejs
+
+coming_soon: 1
+category: stacks
+tags:
+  - app
+  - web
+  - nodejs

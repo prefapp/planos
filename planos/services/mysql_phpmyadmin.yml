@@ -9,6 +9,8 @@ requisitos:
     RAM: 1024M
     disco: 2.5G
 
+category: services
+
 construcciones: 
 
     db:

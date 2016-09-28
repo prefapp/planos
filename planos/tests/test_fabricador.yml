@@ -8,6 +8,8 @@ descripcion: >
 
 uso_interno: 1
 
+category: test
+
 construcciones:
 
     app: 
