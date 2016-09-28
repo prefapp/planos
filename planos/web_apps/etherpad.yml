@@ -23,7 +23,7 @@ construcciones:
     entrypoint: 
       - bash 
       - -c 
-      - "sleep 40 && /entrypoint.sh && bin/run.sh root"
+      - "sleep 60 && /entrypoint.sh && bin/run.sh root"
     ports:
 
       - "80:9001"
