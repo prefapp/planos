@@ -17,6 +17,8 @@ construcciones:
 
     role: wordpress
 
+    image: prefapp/wordpress
+
     ports:
 
       - "80:80"
@@ -81,7 +83,7 @@ construcciones:
           name: "app/wordpress/db_host"
           recipe: "app_wordpress::deploy"
 
-        value: "db.maseda"
+        value: "db.wp"
 
       db_password:
 
