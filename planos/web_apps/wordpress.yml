@@ -17,7 +17,7 @@ construcciones:
 
     role: wordpress
 
-    image: prefapp/wordpress
+    imagen_base: prefapp/wordpress
 
     ports:
 
