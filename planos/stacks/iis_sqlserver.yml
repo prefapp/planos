@@ -1,0 +1,90 @@
+nombre: iss_sqlserver
+
+autor: "Equipo PrefApp <info@prefapp.in>"
+
+version: 0.1
+
+descripcion: >
+
+  Aplicación web con IIS y SQL Server
+
+category: stacks
+
+tags:
+
+  - app
+  - web
+  - windows
+
+construcciones:
+
+  app:
+
+    image: microsoft/aspnet
+
+    ports: 
+    
+      - "#{puerto}:80"
+
+    parameters:
+
+      puerto:
+
+        variable:
+
+          display_name: "Puerto IIS"
+
+          validations:
+
+            predefined: "tcp_port"
+    
+        valor: 80
+
+        user_provided: 1
+
+  sqlserver:
+
+    image: microsoft/mssql-server-windows-express
+
+    environment:
+
+      ACCEPT_EULA: "#{accept_eula}"
+
+      sa_password: "#{db_password}"
+
+    parameters:
+
+      accept_eula:
+
+        variable:
+      
+          display_name: "Aceptar términos del EULA"
+
+          field_type: "radio"
+
+          validations:
+
+            fixed_values:
+              - "Y"
+              - "N"
+
+        valor: "Y"
+
+        user_provided: 1
+
+      db_password:
+
+        variable:
+
+          display_name: "Password del administrador" 
+
+          validations: 
+
+            predefined: "sql_server_password"
+
+        user_provided: 1
+
+           
+    
+      
+
