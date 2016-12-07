@@ -10,6 +10,10 @@ descripcion: >
 
 category: stacks
 
+requisitos:
+
+  plataforma: WINDOWS
+
 tags:
 
   - app
@@ -25,6 +29,10 @@ construcciones:
     ports: 
     
       - "#{puerto}:80"
+  
+    links:
+    
+      - "db:db"
 
     parameters:
 
@@ -42,7 +50,7 @@ construcciones:
 
         user_provided: 1
 
-  sqlserver:
+  db:
 
     image: microsoft/mssql-server-windows-express
 
@@ -51,6 +59,8 @@ construcciones:
       ACCEPT_EULA: "#{accept_eula}"
 
       sa_password: "#{db_password}"
+
+      attach_dbs: "[{'dbName':'#{db_nombre}','dbFiles':['#{db_data_ruta}','#{db_ruta_log}']}]"
 
     parameters:
 
@@ -84,7 +94,43 @@ construcciones:
 
         user_provided: 1
 
-           
+      db_nombre:
+
+        variable:
+
+          display_name: "Nombre de la bbdd a importar"
+
+          validations:
+
+            predefined: "mysql_dbname" 
+
+        user_provided: 1
+
+        valor: SampleDb
+
+      db_data_ruta:
+
+        variable: 
+
+          display_name: "Ruta del fichero mdf de la bbdd"    
+
+          validations:
+
+            predefined: "windows_path"
+
+        user_provided: 1
+
+      db_ruta_log:
+
+        variable:
+
+          display_name: "Ruta del fichero ldf de la bbdd"
+
+          validations:
+
+            predefined: "windows_path"
+
+        user_provided: 1
     
       
 
