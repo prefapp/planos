@@ -34,6 +34,10 @@ construcciones:
     
       - "db:db"
 
+    volumes:
+
+      - "#{ruta_codigo_app}:/inetpub/wwwroot"
+
     parameters:
 
       puerto:
@@ -49,6 +53,19 @@ construcciones:
         valor: 80
 
         user_provided: 1
+
+      ruta_codigo_app:
+
+        variable:
+
+          display_name: "Ruta del código de la aplicación (en el HOST)"
+
+          validations:
+
+            predefined: "windows_path"
+
+        user_provided: 1
+
 
   db:
 
@@ -132,5 +149,3 @@ construcciones:
 
         user_provided: 1
     
-      
-
