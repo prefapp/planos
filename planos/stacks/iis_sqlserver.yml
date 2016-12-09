@@ -77,7 +77,11 @@ construcciones:
 
       sa_password: "#{db_password}"
 
-      attach_dbs: "[{'dbName':'#{db_nombre}','dbFiles':['#{db_data_ruta}','#{db_ruta_log}']}]"
+      attach_dbs: "[{'dbName':'#{db_nombre}','dbFiles':['c:\\temp\\#{db_data_nombre}','c:\\temp\\#{db_log_nombre}']}]"
+
+    volumes:
+
+      - '#{ruta_ficheros_bd}:/temp'
 
     parameters:
 
@@ -125,27 +129,38 @@ construcciones:
 
         valor: SampleDb
 
-      db_data_ruta:
+      db_data_nombre:
 
         variable: 
 
-          display_name: "Ruta del fichero mdf de la bbdd"    
+          display_name: "Nombre del fichero mdf de la bbdd"    
 
           validations:
 
-            predefined: "windows_path"
+            predefined: "unix_path"
 
         user_provided: 1
 
-      db_ruta_log:
+      db_log_nombre:
 
         variable:
 
-          display_name: "Ruta del fichero ldf de la bbdd"
+          display_name: "Nombre del fichero ldf de la bbdd"
+
+          validations:
+
+            predefined: "unix_path"
+
+        user_provided: 1
+    
+      ruta_ficheros_bd:
+
+        variable:
+
+          display_name: "Ruta del host donde se encuentra los ficheros mdf y ldf de la bbdd"
 
           validations:
 
             predefined: "windows_path"
 
         user_provided: 1
-    
