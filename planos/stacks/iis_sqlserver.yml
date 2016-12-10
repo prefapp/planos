@@ -66,6 +66,8 @@ construcciones:
 
         user_provided: 1
 
+        required: 1
+
 
   db:
 
@@ -115,6 +117,8 @@ construcciones:
 
         user_provided: 1
 
+        required: 1
+
       db_nombre:
 
         variable:
@@ -129,6 +133,8 @@ construcciones:
 
         valor: SampleDb
 
+        required: 1
+
       db_data_nombre:
 
         variable: 
@@ -141,6 +147,8 @@ construcciones:
 
         user_provided: 1
 
+        required: 1
+
       db_log_nombre:
 
         variable:
@@ -152,15 +160,19 @@ construcciones:
             predefined: "unix_path"
 
         user_provided: 1
+
+        required: 1
     
       ruta_ficheros_bd:
 
         variable:
 
-          display_name: "Ruta del host donde se encuentra los ficheros mdf y ldf de la bbdd"
+          display_name: "Ruta donde se encuentra los ficheros mdf y ldf de la bbdd (en el HOST)"
 
           validations:
 
-            predefined: "windows_path"
+            predefined: "windows_file"
 
         user_provided: 1
+
+        required: 1
