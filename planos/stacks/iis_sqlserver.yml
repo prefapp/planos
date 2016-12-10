@@ -171,7 +171,7 @@ construcciones:
 
           validations:
 
-            predefined: "windows_file"
+            predefined: "windows_path"
 
         user_provided: 1
 
