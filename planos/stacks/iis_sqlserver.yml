@@ -83,7 +83,7 @@ construcciones:
 
     volumes:
 
-      - '#{ruta_ficheros_bd}:/temp'
+      - '#{ruta_ficheros_bd}:c:\temp'
 
     parameters:
 
