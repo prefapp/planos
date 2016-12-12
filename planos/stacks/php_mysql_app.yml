@@ -41,5 +41,4 @@ construcciones:
 
 
   db:
-
-		from: mysql_db_riyic:0.1@db
+    from: mysql_db_riyic:0.1@db
