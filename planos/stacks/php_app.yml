@@ -42,7 +42,7 @@ construcciones:
       # user defined
       data_dir:
         variable:
-          display_name: "Directory where app stores data"
+          display_name: "Directory where app stores data that must persists between deploys"
           validations:
             predefined: 'unix_path'
           field_type: text
