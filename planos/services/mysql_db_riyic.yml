@@ -11,6 +11,7 @@ construcciones:
 
   db:
     role: mysql_db
+    imagen_base: prefapp/mysql
 
     command: "/root/start.sh"
 

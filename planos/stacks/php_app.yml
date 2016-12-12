@@ -6,7 +6,7 @@ version: 0.1
 
 descripcion: >
 
-  Aplicacion web con nginx, php-fpm
+  Aplicacion PHP con nginx, php-fpm
 
 coming_soon: 0
 
@@ -102,6 +102,14 @@ construcciones:
           recipe: "app_php::fcgi_app"
         user_provided: 1
 
+      php_version:
+        riyic:
+          name: "lang/php/version"
+          recipe: "lang_php::default"
+        value: "5.5"
+        user_provided: 1
+
+
       postdeploy_script:
         riyic:
           name: "app/php/fcgi_apps/[0]/postdeploy_script"
@@ -121,13 +129,14 @@ construcciones:
           name: "app/php/fcgi_apps/[0]/domain"
           recipe: "app_php::fcgi_app"
         value: "default"
+        #user_provided: 1
 
       target_path:
         riyic:
           name: "app/php/fcgi_apps/[0]/target_path"
           recipe: "app_php::fcgi_app"
         value: "/home/app"
-        user_provided: 1
+        #user_provided: 1
 
 
 
