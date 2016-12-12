@@ -96,6 +96,7 @@ construcciones:
   db:
 
     role: wordpress_db
+    imagen_base: prefapp/mysql
 
     command: "/root/start.sh"
 
