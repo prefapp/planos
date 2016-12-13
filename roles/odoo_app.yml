@@ -1,0 +1,258 @@
+---
+name: odoo_app
+description: container de app para odoo
+parameters:
+-   name: riyic/updates_check_interval
+    display_name: Updates check interval
+    description: How often check for update with central server (1min,2h,3d)
+    field_type: text
+    validations:
+        regex: "(?-mix:^(never)|\\d+(min|h|d)?)"
+    default_value: never
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_locale
+    display_name: System locale settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^(C|POSIX|[a-z]{2,3}\\_[a-z]{2})\\.?[a-z0-9\\-]{0,10}$)"
+    default_value: en_US.UTF-8
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/enable_report
+    display_name: Enable chef convergence report
+    description: Enable delivery of chef convergence report to riyic
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/install_runit_inside_container
+    display_name: Installs runit inside container
+    description: Installs runit if chef is running inside container?
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'yes'
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_timezone
+    display_name: System timezone settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^\\w+\\/\\w+$)"
+    default_value: Europe/Madrid
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: app/odoo/installations/@/domain
+    display_name: Application domain
+    description: Domain associated to app virtual host
+    field_type: text
+    validations:
+        predefined: domain
+    default_value: default
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/alias
+    display_name: Application domain alias
+    description: Other domains associated to app virtual host
+    field_type: array_input
+    validations:
+        predefined: domain
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: array
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/admin_password
+    display_name: Odoo admin password
+    description: Odoo admin password
+    field_type: text
+    validations:
+        predefined: password
+    default_value: 
+    calculated: 1
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/data_dir
+    display_name: Data directory
+    description: Odoo data directory
+    field_type: text
+    validations:
+        predefined: unix_path
+    default_value: "/opt/odoo/data"
+    calculated: 0
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/db_host
+    display_name: Database host
+    description: Database host
+    field_type: text
+    validations:
+        predefined: server_name
+    default_value: db.local
+    calculated: 0
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/db_name
+    display_name: Database name
+    description: Database Name
+    field_type: text
+    validations:
+        predefined: postgresql_identifier
+    default_value: odoo_db
+    calculated: 0
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/db_user
+    display_name: Database username
+    description: Database related user
+    field_type: text
+    validations:
+        predefined: postgresql_identifier
+    default_value: odoo_user
+    calculated: 0
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/db_password
+    display_name: Database user password
+    description: Database user password
+    field_type: text
+    validations:
+        predefined: db_password
+    default_value: 
+    calculated: 1
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/environment
+    display_name: Application environment
+    description: Application Environment
+    field_type: text
+    validations:
+        predefined: word
+    default_value: production
+    calculated: 0
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/target_path
+    display_name: Application deployment folder
+    description: The application will be deployed to this folder
+    field_type: text
+    validations:
+        predefined: unix_path
+    default_value: "/opt/odoo"
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/entry_point
+    display_name: Application entry point script
+    description: Script to start the application
+    field_type: text
+    validations:
+        predefined: unix_path
+    default_value: openerp-wsgi.py
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/user
+    display_name: Deployment owner
+    description: User that shall own the target path
+    field_type: text
+    validations:
+        predefined: username
+    default_value: odoo
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/group
+    display_name: Deployment group
+    description: The group that shall own the target path
+    field_type: text
+    validations:
+        predefined: username
+    default_value: users
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+-   name: app/odoo/installations/@/version
+    display_name: Odoo version
+    description: Odoo version to install
+    field_type: text
+    validations:
+        predefined: revision
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_odoo::deploy
+recipes:
+- riyic::default
+- app_odoo::deploy

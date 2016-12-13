@@ -1,0 +1,311 @@
+---
+name: mysql_db
+description: Rol de bbdd para plano 'php_mysql_app'
+parameters:
+-   name: riyic/updates_check_interval
+    display_name: Updates check interval
+    description: How often check for update with central server (1min,2h,3d)
+    field_type: text
+    validations:
+        regex: "(?-mix:^(never)|\\d+(min|h|d)?)"
+    default_value: never
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_locale
+    display_name: System locale settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^(C|POSIX|[a-z]{2,3}\\_[a-z]{2})\\.?[a-z0-9\\-]{0,10}$)"
+    default_value: en_US.UTF-8
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/enable_report
+    display_name: Enable chef convergence report
+    description: Enable delivery of chef convergence report to riyic
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/install_runit_inside_container
+    display_name: Installs runit inside container
+    description: Installs runit if chef is running inside container?
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'yes'
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_timezone
+    display_name: System timezone settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^\\w+\\/\\w+$)"
+    default_value: Europe/Madrid
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: dbs/mysql/server/root_password
+    display_name: MySQL Server Root Password
+    description: Password for the mysqld root user
+    field_type: text
+    validations:
+        predefined: mysql_dbpassword
+    default_value: 
+    calculated: 1
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/server/repl_password
+    display_name: MySQL Server Replication Password
+    description: Password for the mysql replication
+    field_type: text
+    validations:
+        predefined: mysql_dbpassword
+    default_value: 
+    calculated: 1
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/server/debian_password
+    display_name: MySQL Server Admin password for Debian
+    description: Password for the mysqld admin user in Debian
+    field_type: text
+    validations:
+        predefined: mysql_dbpassword
+    default_value: 
+    calculated: 1
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/server/bind_address
+    display_name: MySQL Bind Address
+    description: Address that mysqld should listen on
+    field_type: text
+    validations:
+        predefined: ipv4
+    default_value: 0.0.0.0
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/key_buffer
+    display_name: MySQL Tunable Key Buffer
+    description: 
+    field_type: text
+    validations:
+        regex: "(?-mix:\\A\\d+M\\z)"
+    default_value: 250M
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/max_connections
+    display_name: MySQL Tunable Max Connections
+    description: 
+    field_type: text
+    validations:
+        range: 100..10000
+    default_value: '500'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/wait_timeout
+    display_name: MySQL Tunable Wait Timeout
+    description: 
+    field_type: text
+    validations:
+        range: 10..30000
+    default_value: '180'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/net_read_timeout
+    display_name: MySQL Tunable Net Read Timeout
+    description: 
+    field_type: text
+    validations:
+        range: 10..10000
+    default_value: '30'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/net_write_timeout
+    display_name: MySQL Tunable Net Write Timeout
+    description: 
+    field_type: text
+    validations:
+        range: 10..10000
+    default_value: '30'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/back_log
+    display_name: MySQL Tunable Back Log
+    description: 
+    field_type: text
+    validations:
+        range: 10..30000
+    default_value: '128'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/table_cache
+    display_name: MySQL Tunable Table Cache for MySQL < 5.1.3
+    description: 
+    field_type: text
+    validations:
+        range: 16..65536
+    default_value: '128'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/table_open_cache
+    display_name: MySQL Tunable Table Cache for MySQL >= 5.1.3
+    description: 
+    field_type: text
+    validations:
+        range: 16..65536
+    default_value: '128'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/max_heap_table_size
+    display_name: MySQL Tunable Max Heap Table Size
+    description: 
+    field_type: text
+    validations:
+        regex: "(?-mix:\\A\\d+M\\z)"
+    default_value: 32M
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/expire_logs_days
+    display_name: MySQL Expire Log Days
+    description: 
+    field_type: text
+    validations:
+        range: 1..365
+    default_value: '10'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/tunable/max_binlog_size
+    display_name: MySQL Max Binlog Size
+    description: 
+    field_type: text
+    validations:
+        regex: "(?-mix:\\A\\d+M\\z)"
+    default_value: 100M
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::server
+-   name: dbs/mysql/dbs/@/name
+    display_name: Database name
+    description: Database Name
+    field_type: text
+    validations:
+        predefined: mysql_dbname
+    default_value: my_db
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::create_db
+-   name: dbs/mysql/dbs/@/user
+    display_name: Database username
+    description: Database related user
+    field_type: text
+    validations:
+        predefined: mysql_dbuser
+    default_value: my_user
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::create_db
+-   name: dbs/mysql/dbs/@/password
+    display_name: Database user password
+    description: Database user password
+    field_type: text
+    validations:
+        predefined: db_password
+    default_value: 
+    calculated: 1
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: dbs_mysql::create_db
+recipes:
+- riyic::default
+- dbs_mysql::server
+- dbs_mysql::create_db

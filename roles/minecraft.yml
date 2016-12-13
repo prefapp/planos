@@ -1,0 +1,158 @@
+---
+name: minecraft
+description: ''
+parameters:
+-   name: riyic/updates_check_interval
+    display_name: Updates check interval
+    description: How often check for update with central server (1min,2h,3d)
+    field_type: text
+    validations:
+        regex: "(?-mix:^(never)|\\d+(min|h|d)?)"
+    default_value: never
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_locale
+    display_name: System locale settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^(C|POSIX|[a-z]{2,3}\\_[a-z]{2})\\.?[a-z0-9\\-]{0,10}$)"
+    default_value: en_US.UTF-8
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/enable_report
+    display_name: Enable chef convergence report
+    description: Enable delivery of chef convergence report to riyic
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/install_runit_inside_container
+    display_name: Installs runit inside container
+    description: Installs runit if chef is running inside container?
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_timezone
+    display_name: System timezone settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^\\w+\\/\\w+$)"
+    default_value: 
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: app/minecraft/opname
+    display_name: Admin Nickname
+    description: Nickname to give initial operator status
+    field_type: text
+    validations:
+        predefined: word
+    default_value: admin
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_minecraft::server
+-   name: app/minecraft/online-mode
+    display_name: Online mode
+    description: Whether the server will verify usernames with minecraft.net
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_minecraft::server
+-   name: app/minecraft/monsters
+    display_name: Spawn Monsters
+    description: Spawn Monsters
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_minecraft::server
+-   name: app/minecraft/max-players
+    display_name: Maximum Players
+    description: Maximum Players
+    field_type: text
+    validations:
+        regex: "(?-mix:^\\d+$)"
+    default_value: '20'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_minecraft::server
+-   name: app/minecraft/level-name
+    display_name: Level Name
+    description: Name for the level
+    field_type: text
+    validations:
+        predefined: word
+    default_value: levelname
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_minecraft::server
+-   name: app/minecraft/server-port
+    display_name: Minecraft Server listen port
+    description: Minecraft Server listen port
+    field_type: text
+    validations:
+        predefined: int
+    default_value: '20'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_minecraft::server
+recipes:
+- riyic::default
+- app_minecraft::server

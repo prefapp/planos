@@ -1,0 +1,132 @@
+---
+name: sshd_y_docker
+description: taller gpul 2016
+parameters:
+-   name: riyic/updates_check_interval
+    display_name: Updates check interval
+    description: How often check for update with central server (1min,2h,3d)
+    field_type: text
+    validations:
+        regex: "(?-mix:^(never)|\\d+(min|h|d)?)"
+    default_value: never
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_locale
+    display_name: System locale settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^(C|POSIX|[a-z]{2,3}\\_[a-z]{2})\\.?[a-z0-9\\-]{0,10}$)"
+    default_value: en_US.UTF-8
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/enable_report
+    display_name: Enable chef convergence report
+    description: Enable delivery of chef convergence report to riyic
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/install_runit_inside_container
+    display_name: Installs runit inside container
+    description: Installs runit if chef is running inside container?
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'yes'
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_timezone
+    display_name: System timezone settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^\\w+\\/\\w+$)"
+    default_value: Europe/Madrid
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: system/users/bash/@/username
+    display_name: System username
+    description: " User name to add to the system with bash shell"
+    field_type: text
+    validations:
+        predefined: username
+    default_value: root
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: system_user::with_bash
+-   name: system/users/bash/@/password
+    display_name: User password
+    description: Password to the system user
+    field_type: text
+    validations:
+        predefined: password
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: system_user::with_bash
+-   name: system/users/bash/@/group
+    display_name: User Group
+    description: 'Group to join the user, default: users'
+    field_type: text
+    validations:
+        predefined: username
+    default_value: root
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: system_user::with_bash
+-   name: system/users/bash/@/ssh_keys
+    display_name: User ssh authorized keys
+    description: Ssh authorized key for the users
+    field_type: text
+    validations:
+        predefined: ssh_public_key
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: system_user::with_bash
+recipes:
+- riyic::default
+- tools_docker::engine
+- tools_docker::compose
+- system_user::with_bash
+- system_user::with_ssh_keys
+- tools_sshd::install

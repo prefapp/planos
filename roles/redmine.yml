@@ -1,0 +1,263 @@
+---
+name: redmine
+description: ''
+parameters:
+-   name: riyic/updates_check_interval
+    display_name: Updates check interval
+    description: How often check for update with central server (1min,2h,3d)
+    field_type: text
+    validations:
+        regex: "(?-mix:^(never)|\\d+(min|h|d)?)"
+    default_value: never
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_locale
+    display_name: System locale settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^(C|POSIX|[a-z]{2,3}\\_[a-z]{2})\\.?[a-z0-9\\-]{0,10}$)"
+    default_value: en_US.UTF-8
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/enable_report
+    display_name: Enable chef convergence report
+    description: Enable delivery of chef convergence report to riyic
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/install_runit_inside_container
+    display_name: Installs runit inside container
+    description: Installs runit if chef is running inside container?
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'yes'
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_timezone
+    display_name: System timezone settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^\\w+\\/\\w+$)"
+    default_value: Europe/Madrid
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: app/redmine/domain
+    display_name: Redmine domain
+    description: Domain associated to redmine virtual host
+    field_type: text
+    validations:
+        predefined: domain
+    default_value: default
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/alias
+    display_name: Application domain alias
+    description: Other domains associated to app virtual host
+    field_type: array_input
+    validations:
+        predefined: domain
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: array
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/dbname
+    display_name: Redmine database name
+    description: Redmine database name (only to mysql or postgresql)
+    field_type: text
+    validations:
+        predefined: mysql_dbname
+    default_value: redmine
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/dbuser
+    display_name: Redmine database username
+    description: Redmine database username (only to mysql or postgresql)
+    field_type: text
+    validations:
+        predefined: mysql_dbuser
+    default_value: redmine
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/dbpassword
+    display_name: Redmine Database Password
+    description: Database password for this Redmine installation
+    field_type: text
+    validations:
+        predefined: db_password
+    default_value: 
+    calculated: 1
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/dbtype
+    display_name: Redmine database type
+    description: Redmine database type ( sqlite, mysql or postgresql)
+    field_type: radio
+    validations:
+        fixed_values:
+        - sqlite
+        - mysql
+    default_value: mysql
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/dbhost
+    display_name: Redmine database hostname
+    description: Redmine database hostname (only to mysql or postgresql)
+    field_type: text
+    validations:
+        predefined: host
+    default_value: db.host
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/repo_url
+    display_name: Redmine repository
+    description: Redmine repository from which to download source code
+    field_type: text
+    validations:
+        predefined: url
+    default_value: http://www.redmine.org/releases
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/revision
+    display_name: Redmine version
+    description: 'Redmine file version to download '
+    field_type: text
+    validations:
+        predefined: revision
+    default_value: redmine-3.1.0.tar.gz
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/repo_type
+    display_name: Repo Type
+    description: Repository type from which to download application code
+    field_type: radio
+    validations:
+        fixed_values:
+        - git
+        - subversion
+        - remote_archive
+    default_value: remote_archive
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/target_path
+    display_name: Redmine deploy_to directory
+    description: Directory to where deploy redmine source code
+    field_type: text
+    validations:
+        predefined: unix_path
+    default_value: "/home/redmine/deploy"
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/adminpass
+    display_name: Redmine admin user password
+    description: Redmine admin user password
+    field_type: text
+    validations:
+        predefined: password
+    default_value: 
+    calculated: 1
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/user
+    display_name: Deployment owner
+    description: User that shall own the target path
+    field_type: text
+    validations:
+        predefined: username
+    default_value: redmine
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+-   name: app/redmine/group
+    display_name: Deployment group
+    description: The group that shall own the target path
+    field_type: text
+    validations:
+        predefined: username
+    default_value: users
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_redmine::deploy
+recipes:
+- riyic::default
+- app_redmine::deploy

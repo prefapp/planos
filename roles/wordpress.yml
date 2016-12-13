@@ -1,0 +1,247 @@
+---
+name: wordpress
+description: Rol de la app wordpress
+parameters:
+-   name: riyic/updates_check_interval
+    display_name: Updates check interval
+    description: How often check for update with central server (1min,2h,3d)
+    field_type: text
+    validations:
+        regex: "(?-mix:^(never)|\\d+(min|h|d)?)"
+    default_value: never
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_locale
+    display_name: System locale settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^(C|POSIX|[a-z]{2,3}\\_[a-z]{2})\\.?[a-z0-9\\-]{0,10}$)"
+    default_value: en_US.UTF-8
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/enable_report
+    display_name: Enable chef convergence report
+    description: Enable delivery of chef convergence report to riyic
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/install_runit_inside_container
+    display_name: Installs runit inside container
+    description: Installs runit if chef is running inside container?
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'yes'
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_timezone
+    display_name: System timezone settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^\\w+\\/\\w+$)"
+    default_value: Europe/Madrid
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: app/wordpress/domain
+    display_name: Application domain
+    description: Domain associated to app virtual host
+    field_type: text
+    validations:
+        predefined: domain
+    default_value: default
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/alias
+    display_name: Application domain alias
+    description: Other domains associated to app virtual host
+    field_type: array_input
+    validations:
+        predefined: domain
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: array
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/db_host
+    display_name: Database host
+    description: Database host
+    field_type: text
+    validations:
+        predefined: server_name
+    default_value: db.local
+    calculated: 0
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/db_name
+    display_name: Database name
+    description: Database Name
+    field_type: text
+    validations:
+        predefined: mysql_dbname
+    default_value: wordpress_db
+    calculated: 0
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/db_user
+    display_name: Database username
+    description: Database related user
+    field_type: text
+    validations:
+        predefined: mysql_dbuser
+    default_value: wordpress_user
+    calculated: 0
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/db_password
+    display_name: Database user password
+    description: Database user password
+    field_type: text
+    validations:
+        predefined: mysql_dbpassword
+    default_value: 
+    calculated: 1
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/target_path
+    display_name: Application deployment folder
+    description: The application will be deployed to this folder
+    field_type: text
+    validations:
+        predefined: unix_path
+    default_value: "/home/wordpress"
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/user
+    display_name: Deployment owner
+    description: User that shall own the target path
+    field_type: text
+    validations:
+        predefined: username
+    default_value: wordpress
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/group
+    display_name: Deployment group
+    description: The group that shall own the target path
+    field_type: text
+    validations:
+        predefined: username
+    default_value: users
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/smtp_server
+    display_name: Smtp host
+    description: Smtp server to use to send emails, empty to localhost
+    field_type: text
+    validations:
+        predefined: server_name
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/smtp_user
+    display_name: Smtp username
+    description: Smtp server login account
+    field_type: text
+    validations:
+        predefined: smtp_user
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/smtp_password
+    display_name: Smtp user password
+    description: Smtp server account password
+    field_type: text
+    validations:
+        predefined: password
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+-   name: app/wordpress/smtp_server_secure
+    display_name: Enable SMTP secure connection?
+    description: Use TLS in smtp server connection
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'yes'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_wordpress::deploy
+recipes:
+- riyic::default
+- app_wordpress::deploy
