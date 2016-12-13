@@ -36,7 +36,7 @@ construcciones:
 
     volumes:
 
-      - "#{ruta_codigo_app}:/inetpub/wwwroot"
+      - "#{ruta_codigo_app}:c:\inetpub\wwwroot"
 
     parameters:
 
