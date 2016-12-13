@@ -80,7 +80,7 @@ construcciones:
 
       sa_password: "#{db_password}"
 
-      attach_dbs: "[{'dbName':'#{db_nombre}','dbFiles':['c:\\\\\\\\temp\\\\\\\\#{db_data_nombre}','c:\\\\\\\\temp\\\\\\\\#{db_log_nombre}']}]"
+      attach_dbs: '[{"dbName":"#{db_nombre}","dbFiles":["c:\\\\temp\\\\#{db_data_nombre}","c:\\\\temp\\\\#{db_log_nombre}"]}]'
 
     volumes:
 
@@ -150,7 +150,7 @@ construcciones:
           
           validations:
 
-            predefined: "unix_path"
+            predefined: "windows_file"
 
         user_provided: 1
 
@@ -165,7 +165,7 @@ construcciones:
 
           validations:
 
-            predefined: "unix_path"
+            predefined: "windows_file"
 
         user_provided: 1
 
