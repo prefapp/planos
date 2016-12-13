@@ -63,10 +63,11 @@ construcciones:
           validations:
 
             predefined: "windows_path"
+        
+          required: 1
 
         user_provided: 1
 
-        required: 1
 
 
   db:
@@ -79,7 +80,7 @@ construcciones:
 
       sa_password: "#{db_password}"
 
-      attach_dbs: "[{'dbName':'#{db_nombre}','dbFiles':['c:\\\\temp\\\\#{db_data_nombre}','c:\\\\temp\\\\#{db_log_nombre}']}]"
+      attach_dbs: "[{'dbName':'#{db_nombre}','dbFiles':['c:\\\\\\\\temp\\\\\\\\#{db_data_nombre}','c:\\\\\\\\temp\\\\\\\\#{db_log_nombre}']}]"
 
     volumes:
 
@@ -94,6 +95,8 @@ construcciones:
           display_name: "Aceptar términos del EULA"
 
           field_type: "radio"
+        
+          required: 1
 
           validations:
 
@@ -111,13 +114,14 @@ construcciones:
 
           display_name: "Password del administrador" 
 
+          required: 1
+          
           validations: 
 
             predefined: "sql_server_password"
 
         user_provided: 1
 
-        required: 1
 
       db_nombre:
 
@@ -125,6 +129,8 @@ construcciones:
 
           display_name: "Nombre de la bbdd a importar"
 
+          required: 1
+          
           validations:
 
             predefined: "mysql_dbname" 
@@ -133,7 +139,6 @@ construcciones:
 
         valor: SampleDb
 
-        required: 1
 
       db_data_nombre:
 
@@ -141,19 +146,22 @@ construcciones:
 
           display_name: "Nombre del fichero mdf de la bbdd"    
 
+          required: 1
+          
           validations:
 
             predefined: "unix_path"
 
         user_provided: 1
 
-        required: 1
 
       db_log_nombre:
 
         variable:
 
           display_name: "Nombre del fichero ldf de la bbdd"
+        
+          required: 1
 
           validations:
 
@@ -161,7 +169,6 @@ construcciones:
 
         user_provided: 1
 
-        required: 1
     
       ruta_ficheros_bd:
 
@@ -169,10 +176,11 @@ construcciones:
 
           display_name: "Ruta donde se encuentra los ficheros mdf y ldf de la bbdd (en el HOST)"
 
+          required: 1
+          
           validations:
 
             predefined: "windows_path"
 
         user_provided: 1
 
-        required: 1
