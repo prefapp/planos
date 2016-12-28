@@ -16,20 +16,22 @@ tags:
   - web
 
 construcciones:
+  app_data:
+    image: busybox
+    volumes:
+      - /opt/logs
+      - "@{app}#{data_dir}"
+  
   app:
-
     role: app_ruby
-
     command: "/root/start.sh"
-
     ports:
       - "80:80"
-
     links:
       - "db:#{db_host}"
-
     volumes_from:
       - app_data
+    #environment: "@{app}#{env_vars}"
 
     parameters:
       # user defined
@@ -39,6 +41,14 @@ construcciones:
           validations:
             predefined: 'unix_path'
           field_type: text
+        user_provided: 1
+      
+      env_vars:
+        variable:
+          display_name: "App configuration variables through environment"
+          validations:
+            predefined: 'text'
+          field_type: hash_input
         user_provided: 1
 
       repo_url:

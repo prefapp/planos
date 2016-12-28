@@ -244,7 +244,7 @@ parameters:
     active: 1
     recipe: app_php::fcgi_app
 -   name: app/php/fcgi_apps/@/postdeploy_script
-    display_name: Bash script with extra tasks to run
+    display_name: Bash script with extra tasks to run after deploy
     description: Script with extra tasks to run after deploy (relative path from target_path)
     field_type: text
     validations:
@@ -317,6 +317,19 @@ parameters:
     field_type: hash_input
     validations:
         predefined: word
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: hash
+    active: 1
+    recipe: app_php::fcgi_app
+-   name: app/php/fcgi_apps/@/env_vars
+    display_name: Application config vars from environment
+    description: Application configuration variables passed through environment
+    field_type: hash_input
+    validations:
+        predefined: text
     default_value: 
     calculated: 0
     required: 0
