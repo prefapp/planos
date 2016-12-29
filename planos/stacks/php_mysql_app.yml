@@ -31,14 +31,7 @@ construcciones:
     from: php_app:0.1@app
 
     links:
-      - "db:#{db_host}"
-
-    parameters:
-      # user defined
-      db_host:
-        value: "mysql"
-        constante: 1
-
-
+      - "db:db"
+    
   db:
     from: mysql_db_riyic:0.1@db

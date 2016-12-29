@@ -29,6 +29,8 @@ construcciones:
 
   app:
     from: ruby_app:0.1@app
+    links:
+      - "db:db"
 
   db:
     from: mysql_db_riyic:0.1@db

@@ -1,0 +1,31 @@
+nombre: test_fabricador_compuesto
+
+autor: "Equipo PrefApp"
+
+descripcion: >
+
+    Plano de test con un rol para pruebas
+
+uso_interno: 1
+
+category: test
+
+construcciones:
+
+    app: 
+      from: test_fabricador:0.0@app
+      ports:
+        - '80:80'
+      links:
+        - "db:#{db_host}"
+
+      parameters:
+        # user defined
+        db_host:
+          value: "mysql"
+          constante: 1
+
+    db:
+      image: busybox
+      links: 
+        - 'app:app'
