@@ -31,7 +31,7 @@ construcciones:
       - "db:#{db_host}"
     volumes_from:
       - app_data
-    #environment: "@{app}#{env_vars}"
+    environment: "@{app}#{env_vars}"
 
     parameters:
       # user defined

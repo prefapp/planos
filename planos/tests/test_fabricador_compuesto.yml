@@ -18,11 +18,24 @@ construcciones:
         - '80:80'
       links:
         - "db:#{db_host}"
+      volumes:
+        - /opt/logs
+        - "#{my_vol}"
+
+      environment: "#{my_env}"
 
       parameters:
         # user defined
         db_host:
-          value: "mysql"
+          valor: "mysql"
+          constante: 1
+
+        my_vol:
+          valor: '/home/vol'
+          constante: 1
+
+        my_env:
+          valor: {"A": "1", "B": 2}
           constante: 1
 
     db:
