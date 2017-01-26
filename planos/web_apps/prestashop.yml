@@ -1,0 +1,16 @@
+nombre: prestashop
+
+autor: "Equipo PrefApp"
+
+version: 0.0
+
+descripcion: >
+
+  Plataforma e-commerce más popular en Europa
+
+coming_soon: 1
+
+tags:
+  - ecommerce
+  - tienda-online
+  - php
