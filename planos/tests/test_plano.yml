@@ -4,7 +4,7 @@ autor: "Equipo PrefApp"
 
 descripcion: >
 
-    Plano de test con un mínimo de configuración para PrefApp::Test
+  Plano de test con un mínimo de configuración para PrefApp::Test
 
 uso_interno: 1
 
@@ -12,8 +12,37 @@ category: test
 
 construcciones:
 
-    web: 
+  web: 
 
-        image: busybox
-        command: "tail -f /dev/null"
+    image: busybox
+    command: "tail -f /dev/null"
 
+    parameters:
+      scalar:
+        variable:
+          display_name: "scalar param"
+          value: "test"
+          validations: 
+            predefined: "text"
+          field_type: text
+        user_provided: 1
+        
+
+      array:
+        variable:
+          display_name: "array param"
+          value: ["a","b"]
+          validations: 
+            predefined: "text"
+          field_type: array_input
+        user_provided: 1
+        
+
+      hash:
+        variable:
+          display_name: "hash param"
+          value: {"a": "1","b": "2"}
+          validations: 
+            predefined: "text"
+          field_type: hash_input
+        user_provided: 1
