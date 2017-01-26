@@ -27,15 +27,15 @@ construcciones:
       parameters:
         # user defined
         db_host:
-          valor: "mysql"
+          value: "mysql"
           constante: 1
 
         my_vol:
-          valor: '/home/vol'
+          value: '/home/vol'
           constante: 1
 
         my_env:
-          valor: {"A": "1", "B": 2}
+          value: {"A": "1", "B": 2}
           constante: 1
 
     db:

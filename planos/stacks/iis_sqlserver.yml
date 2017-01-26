@@ -50,7 +50,7 @@ construcciones:
 
             predefined: "tcp_port"
     
-        valor: 80
+        value: 80
 
         user_provided: 1
 
@@ -104,7 +104,7 @@ construcciones:
               - "Y"
               - "N"
 
-        valor: "Y"
+        value: "Y"
 
         user_provided: 1
 
@@ -137,7 +137,7 @@ construcciones:
 
         user_provided: 1
 
-        valor: SampleDb
+        value: SampleDb
 
 
       db_data_nombre:

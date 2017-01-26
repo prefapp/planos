@@ -34,7 +34,7 @@ construcciones:
                     validations:
                       predefined: 'mysql_dbpassword'
 
-                valor: "qwe123qwe"
+                value: "qwe123qwe"
                 user_provided: 1    
 
             puerto:
@@ -45,7 +45,7 @@ construcciones:
                     validations:
                       predefined: 'tcp_port'
 
-                valor: 3306
+                value: 3306
                 user_provided: 1
 
     phpmyadmin:
@@ -69,7 +69,7 @@ construcciones:
                     validations:
                       predefined: 'tcp_port'
 
-                valor: 80
+                value: 80
                 user_provided: 1
     
                 

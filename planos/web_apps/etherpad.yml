@@ -38,7 +38,7 @@ construcciones:
           display_name: "Etherpad site title"
           validations:
             predefined: 'text'
-        valor: "Etherpad"
+        value: "Etherpad"
         user_provided: 1
       
       admin_user:
@@ -47,7 +47,7 @@ construcciones:
           validations:
             predefined: 'username'
 
-        valor: "admin"
+        value: "admin"
         user_provided: 1
 
       admin_password:
@@ -55,7 +55,7 @@ construcciones:
           display_name: "Admin password"
           validations:
             predefined: 'password'
-        valor: "@y@mo2pheo"
+        value: "@y@mo2pheo"
         user_provided: 1
     
 
@@ -83,6 +83,6 @@ construcciones:
 
         constante: 1
 
-        valor: "qwe123qwe"
+        value: "qwe123qwe"
 
 
