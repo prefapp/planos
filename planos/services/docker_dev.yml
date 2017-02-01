@@ -41,7 +41,7 @@ construcciones:
 
       ssh_port:
         user_provided: 1
-        valor: 2222
+        value: 2222
         default: 2222
         variable:
           display_name: "Ssh connection port"
