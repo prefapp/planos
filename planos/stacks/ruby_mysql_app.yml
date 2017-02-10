@@ -20,12 +20,7 @@ tags:
 construcciones:
 
   app_data:
-
-    image: busybox
-
-    volumes:
-      - /var/log
-      - "@{app}#{data_dir}"
+    from: ruby_app:0.1@app_data
 
   app:
     from: ruby_app:0.1@app

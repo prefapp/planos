@@ -19,7 +19,7 @@ construcciones:
   app_data:
     image: busybox
     volumes:
-      - /opt/logs
+      - /opt/logs/nginx
       - "@{app}#{data_dir}"
   
   app:
