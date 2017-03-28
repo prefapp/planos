@@ -6,70 +6,54 @@ version: 0.0
 
 requisitos: 
 
-    RAM: 1024M
-    disco: 2.5G
+  RAM: 1024M
+  disco: 2.5G
 
 category: services
 
 construcciones: 
 
-    db:
-        image: mysql
+  db:
+    image: mysql
+    from: common:0.1@mysql
 
-        ports:
+    ports:
 
-            - "#{puerto}:3306"
-    
-        environment:
+      - "#{external_port}:3306"
+  
+    environment:
 
-            MYSQL_ROOT_PASSWORD: "#{db_password}"
+      MYSQL_ROOT_PASSWORD: "#{db_password}"
 
-        parameters:
-    
-            db_password:
+    parameters:
+  
+      db_password:
 
-                variable: 
+        variable: 
 
-                    display_name: "Password root mysql"
-                    validations:
-                      predefined: 'mysql_dbpassword'
+          display_name: "Password root mysql"
+          validations:
+            predefined: 'mysql_dbpassword'
+          default_value: "qwe123qwe"
 
-                value: "qwe123qwe"
-                user_provided: 1    
+        user_provided: 1  
 
-            puerto:
-            
-                variable: 
 
-                    display_name: "puerto mysql"
-                    validations:
-                      predefined: 'tcp_port'
+  phpmyadmin:
 
-                value: 3306
-                user_provided: 1
+    image: "phpmyadmin/phpmyadmin"
 
-    phpmyadmin:
+    from: common:0.1@web
 
-        image: "phpmyadmin/phpmyadmin"
+    ports:
+      - "#{external_port}:80"
 
-        ports:
-            - "#{puerto}:80"
+    links:
+      - "db:db"
 
-        links:
-            - "db:db"
+    parameters:
 
-        parameters:
-
-            puerto:
-
-                variable: 
-                    
-                    display_name: "puerto phpadmin"
-
-                    validations:
-                      predefined: 'tcp_port'
-
-                value: 80
-                user_provided: 1
-    
-                
+      external_port:
+        variable: 
+          display_name: "puerto phpmyadmin"
+        

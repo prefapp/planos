@@ -1,0 +1,49 @@
+nombre: common
+
+autor: "Equipo prefapp <info@prefapp.in>"
+
+version: 0.1
+
+category: library
+
+
+construcciones:
+
+  web:
+    parameters:
+
+      external_port:
+        variable:
+          display_name: "Application external http port"
+          validations:
+            predefined: 'tcp_port'
+          default_value: 80
+          advanced: 1
+          required: 1
+        user_provided: 1
+        
+  
+      external_ssl_port:
+        variable: 
+          display_name: "Application external https port"
+          validations:
+            predefined: 'tcp_port'
+          default_value: 443
+          advanced: 1
+          required: 1
+        user_provided: 1
+
+
+  mysql:
+
+    parameters:
+
+      external_port:
+        variable: 
+          display_name: "External mysql port"
+          validations:
+            predefined: 'tcp_port'
+          default_value: 3306
+
+        user_provided: 1
+
