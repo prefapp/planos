@@ -26,26 +26,25 @@ construcciones:
 
     parameters:
       username:
-        default: root
         user_provided: 1
         riyic:
           name: "system/users/bash/[0]/username"
           recipe: "system_user::with_bash"
+          default_value: root
 
       ssh_keys:
         user_provided: 1
-        default: []
         riyic:
           name: "system/users/bash/[0]/ssh_keys"
           recipe: "system_user::with_bash"
+          default_value: []
 
       ssh_port:
         user_provided: 1
-        value: 2222
-        default: 2222
         variable:
           display_name: "Ssh connection port"
           field_type: "text"
           validations:
             regexp: '\d+'
           required: 1
+          default_value: 2222

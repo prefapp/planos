@@ -50,10 +50,11 @@ construcciones:
                 validations:
   
                   predefined: 'tcp_port'
+
+                default_value: 25565
   
             user_provided: 1
   
-            value: 25565
   
         online:
   
@@ -69,10 +70,11 @@ construcciones:
   
                 - TRUE
                 - FALSE
+
+              default_value: TRUE
   
           user_provided: 1
   
-          value: TRUE
     
         eula:
   
@@ -81,6 +83,8 @@ construcciones:
             display_name: "Aceptar términos del EULA"
   
             field_type: "radio"
+
+            default_value: true
   
             validations: 
   
@@ -90,7 +94,6 @@ construcciones:
                 - false
            
   
-          value: true
   
           user_provided: 1
   
@@ -116,6 +119,8 @@ construcciones:
             display_name: "Máximo de jugadores"
   
             field_type: "text"
+          
+            default_value: 20
   
             validations:
   
@@ -123,4 +128,3 @@ construcciones:
   
           user_provided: 1
   
-          value: 20

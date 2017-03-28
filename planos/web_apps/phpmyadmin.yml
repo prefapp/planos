@@ -8,28 +8,29 @@ descripcion: phpMyAdmin (imagen oficial) para usar con un servidor mysql arbitra
 
 construcciones: 
 
-    phpmyadmin:
+  phpmyadmin:
 
-        image: "phpmyadmin/phpmyadmin"
+    image: "phpmyadmin/phpmyadmin"
 
-        ports:
-            - "#{puerto}:80"
+    ports:
+      - "#{puerto}:80"
 
-        enviroment:
-        
-            PMA_ARBITRARY: 1
-
-        parameters:
-
-            puerto:
-
-                variable: 
+    enviroment:
     
-                    display_name: "puerto phpadmin"
-                    validations:
-                      predefined: 'tcp_port'
+      PMA_ARBITRARY: 1
 
-                user_provided: 1
+    parameters:
 
-                value: 8080
+      puerto:
+
+        variable: 
+  
+          display_name: "puerto phpadmin"
+          validations:
+            predefined: 'tcp_port'
+        
+          default_value: 8080
+
+        user_provided: 1
+
 

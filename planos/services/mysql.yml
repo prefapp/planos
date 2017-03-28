@@ -14,8 +14,10 @@ construcciones:
     
     role: mysql_servicio
 
+    from: common:0.1@mysql
+
     ports:
-      -  "3306:3306"
+      -  "#{external_port}:3306"
 
     parameters:
 
@@ -23,6 +25,7 @@ construcciones:
         riyic:
           name: dbs/mysql/server/root_password
           recipe: "dbs_mysql::server"
-        value: "passw0rd"
+          default_value: "passw0rd"
+
         user_provided: 1
 

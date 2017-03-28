@@ -62,7 +62,7 @@ construcciones:
         riyic:
           name: "app/odoo/installations/[0]/alias"
           recipe: "app_odoo::deploy"
-        value: ["foo2.com"]
+          default_value: ["foo2.com"]
 
       # atributos seteados no plano
       data_dir:
@@ -98,7 +98,7 @@ construcciones:
           name: "app/odoo/installations/[0]/db_password"
           recipe: "app_odoo::deploy"
 
-        value: "123qw//"
+        value: "12cvadfsdioasdfjo32qwsx5598//"
 
   db:
 
@@ -149,4 +149,4 @@ construcciones:
           name: "dbs/postgresql/server/postgres_password"
           recipe: "dbs_postresql::server"
 
-        value: "9999999999"
+        value: "34oij34irjfijfa9"

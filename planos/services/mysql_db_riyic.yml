@@ -28,14 +28,14 @@ construcciones:
         riyic:
           name: "dbs/mysql/dbs/[0]/user"
           recipe: "dbs_mysql::create_db"
-        value: "dbuser"
+          default_value: "dbuser"
         user_provided: 1
 
       name:
         riyic:
           name: "dbs/mysql/dbs/[0]/name"
           recipe: "dbs_mysql::create_db"
-        value: "dbname"
+          default_value: "dbname"
         user_provided: 1
 
 
@@ -43,11 +43,11 @@ construcciones:
         riyic:
           name: "dbs/mysql/dbs/[0]/password"
           recipe: "dbs_mysql::create_db"
-        value: 'passw0rd'
+          default_value: 'passw0rd'
         user_provided: 1
 
       root_password:
         riyic:
           name: "dbs/mysql/server/root_password"
           recipe: "dbs_mysql::server"
-        value: '1aMajorSa1sa'
+          default_value: '1aMajorSa1sa'

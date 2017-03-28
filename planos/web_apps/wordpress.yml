@@ -32,7 +32,15 @@ construcciones:
       
       - "db:#{db_host}"
 
-    parameters:
+    parameters:      
+      
+      php_version:
+        user_provided: 1
+
+        riyic:
+
+          name: "lang/php/version"
+          recipe: "lang_php::default"
 
       domain:
 
