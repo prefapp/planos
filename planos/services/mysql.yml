@@ -6,7 +6,7 @@ descripcion: >
   
   Servicio independiente de Mysql montado en un container
 
-category: services
+category: service
 
 construcciones:
   

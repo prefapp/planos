@@ -6,6 +6,8 @@ version: 0.0
 
 descripcion: phpMyAdmin (imagen oficial) para usar con un servidor mysql arbitrario
 
+category: application
+
 construcciones: 
 
   phpmyadmin:

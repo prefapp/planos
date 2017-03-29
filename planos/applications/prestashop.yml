@@ -8,9 +8,10 @@ descripcion: >
 
   Plataforma e-commerce más popular en Europa
 
-coming_soon: 1
+category: application
 
 tags:
   - ecommerce
   - tienda-online
   - php
+  - coming_soon

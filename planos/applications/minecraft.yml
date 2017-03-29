@@ -2,11 +2,9 @@ nombre: minecraft
 
 autor: "Francisco <frmadem@prefapp.es>"
 
-version: 0.0
+version: "0.0"
 
 descripcion: Minecraft Forge
-
-coming_soon: 0
 
 category: application
 
@@ -71,7 +69,7 @@ construcciones:
                 - TRUE
                 - FALSE
 
-              default_value: TRUE
+            default_value: TRUE
   
           user_provided: 1
   
@@ -93,8 +91,6 @@ construcciones:
                 - true
                 - false
            
-  
-  
           user_provided: 1
   
   

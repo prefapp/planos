@@ -8,11 +8,12 @@ descripcion: |
 
   Gestor de proyectos open source, para la gestión y planificación de los mismos
 
-coming_soon: 1
+category: application
 
 tags:
   - ruby
   - project_management
+  - coming_soon
 
 construcciones:
 

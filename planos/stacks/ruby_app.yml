@@ -8,12 +8,13 @@ descripcion: >
 
   Stack web ruby sobre nginx y passenger
 
-coming_soon: 1
-beta: 1
-category: stacks
+category: stack
+
 tags:
   - ruby
   - web
+  - coming_soon
+  - beta
 
 construcciones:
   app_data:

@@ -8,7 +8,7 @@ descripcion: >
 
   Aplicación web con IIS y SQL Server
 
-category: stacks
+category: stack
 
 requisitos:
 
@@ -50,7 +50,7 @@ construcciones:
 
             predefined: "tcp_port"
     
-        value: 80
+          default_value: 80
 
         user_provided: 1
 
@@ -104,7 +104,7 @@ construcciones:
               - "Y"
               - "N"
 
-        value: "Y"
+          default_value: "Y"
 
         user_provided: 1
 
@@ -128,16 +128,13 @@ construcciones:
         variable:
 
           display_name: "Nombre de la bbdd a importar"
-
           required: 1
-          
           validations:
-
             predefined: "mysql_dbname" 
+          default_value: SampleDb
 
         user_provided: 1
 
-        value: SampleDb
 
 
       db_data_nombre:

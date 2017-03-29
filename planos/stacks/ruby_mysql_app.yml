@@ -8,14 +8,13 @@ descripcion: >
 
   Aplicacion web con nginx, ruby y MySQL de backend
 
-coming_soon: 1
-
-category: stacks
+category: stack
 
 tags:
   - ruby
   - mysql
   - web
+  - coming_soon
 
 construcciones:
 

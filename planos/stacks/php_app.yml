@@ -8,16 +8,13 @@ descripcion: >
 
   Aplicacion PHP con nginx, php-fpm
 
-coming_soon: 0
-
-beta: 1
-
-category: stacks
+category: stack
 
 tags:
   - lamp
   - php
   - web
+  - beta
 
 construcciones:
 

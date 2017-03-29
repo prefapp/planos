@@ -1,17 +1,17 @@
-nombre: mysql_phpmyadmin
+name: mysql_phpmyadmin
 
-autor: "Equipo PrefApp"
+author: "Equipo PrefApp"
 
 version: 0.0
 
-requisitos: 
+requirements: 
 
   RAM: 1024M
   disco: 2.5G
 
-category: services
+category: service
 
-construcciones: 
+constructions: 
 
   db:
     image: mysql

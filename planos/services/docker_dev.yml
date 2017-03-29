@@ -10,7 +10,7 @@ version: 0.0
 
 uso_interno: 1
 
-category: services
+category: service
 
 construcciones:
   ssh:

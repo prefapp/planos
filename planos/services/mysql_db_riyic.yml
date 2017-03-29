@@ -4,7 +4,7 @@ version: 0.1
 descripcion: >
   Container con un servidor mysql y una base de datos preparado por riyic
 uso_interno: 1
-category: services
+category: service
 
 
 construcciones:

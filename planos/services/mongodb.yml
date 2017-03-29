@@ -9,13 +9,12 @@ descripcion: >
 
 version: 0.0
 
-coming_soon: 1
-
-category: services
+category: service
 
 tags: 
   - nosql
   - bbdd
+  - coming_soon
 
 
 

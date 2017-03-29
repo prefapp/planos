@@ -2,10 +2,12 @@ nombre: wordpress
 
 autor: "Equipo PrefApp"
 
-version: 0.1
+version: 0.0
 
 descripcion: >
   CMS por excelencia para la creación de blogs o webs de contenidos
+
+category: application
 
 tags:
   - blog
@@ -17,30 +19,16 @@ construcciones:
 
     role: wordpress
 
-    imagen_base: prefapp/wordpress
-
     ports:
 
       - "80:80"
       - "443:443"
 
-    volumes:
-
-      - "#{target_path}/wp-content"
-
     links:
       
       - "db:#{db_host}"
 
-    parameters:      
-      
-      php_version:
-        user_provided: 1
-
-        riyic:
-
-          name: "lang/php/version"
-          recipe: "lang_php::default"
+    parameters:
 
       domain:
 
@@ -58,14 +46,6 @@ construcciones:
         riyic:
 
           name: "app/wordpress/alias"
-          recipe: "app_wordpress::deploy"
-
-      # 
-      # a partir de aqui xa non son user_provided
-      #
-      target_path:
-        riyic:
-          name: "app/wordpress/target_path"
           recipe: "app_wordpress::deploy"
 
 
@@ -91,7 +71,7 @@ construcciones:
           name: "app/wordpress/db_host"
           recipe: "app_wordpress::deploy"
 
-        value: "db.wp"
+        value: "db.maseda"
 
       db_password:
 
@@ -104,7 +84,6 @@ construcciones:
   db:
 
     role: wordpress_db
-    imagen_base: prefapp/mysql
 
     command: "/root/start.sh"
 

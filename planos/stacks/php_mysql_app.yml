@@ -8,17 +8,14 @@ descripcion: >
 
   Aplicacion PHP sobre nginx, php-fpm y MySQL de backend
 
-coming_soon: 0
-
-beta: 1
-
-category: stacks
+category: stack
 
 tags:
   - lamp
   - php
   - mysql
   - web
+  - beta
 
 construcciones:
 
