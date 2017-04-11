@@ -50,4 +50,4 @@ construcciones:
         riyic:
           name: "dbs/mysql/server/root_password"
           recipe: "dbs_mysql::server"
-          default_value: '1aMajorSa1sa'
+        value: '1aMajorSa1sa'
