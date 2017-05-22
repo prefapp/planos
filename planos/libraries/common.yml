@@ -47,3 +47,14 @@ construcciones:
 
         user_provided: 1
 
+
+  proxy-http:
+    image: prefapp/proxy-http 
+    links: 
+      - app:site0
+    ports:
+      - 80:80
+    conditional:
+      attribute: 'app:use_ssl'
+      value: "no"
+
