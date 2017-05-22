@@ -32,3 +32,34 @@ construcciones:
     
   db:
     from: mysql_db_riyic:0.1@db
+
+
+#  letsencrypt:
+#    from: "ssl_letsencrypt:0.1@letsencrypt"
+#    conditional:
+#      attribute: 'app:use_ssl'
+#      value: 'yes'
+#
+#  proxy-ssl:
+#    from: "ssl_letsencrypt:0.1@proxy-ssl"
+#    conditional:
+#      attribute: 'app:use_ssl'
+#      value: 'yes'
+#
+#  proxy:
+#    from: "ssl_letsencrypt:0.1@proxy-ssl"
+#    volumes_from: []
+#    links: 
+#      - app:site0
+#    conditional:
+#      attribute: 'app:use_ssl'
+#      value: "no"
+
+  letsencrypt:
+    from: "ssl_letsencrypt:0.1@letsencrypt"
+
+  proxy-ssl:
+    from: "ssl_letsencrypt:0.1@proxy-ssl"
+
+  proxy:
+    from: "common:0.1@proxy-http"

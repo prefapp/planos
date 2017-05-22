@@ -1,0 +1,73 @@
+nombre: ssl_letsencrypt
+
+autor: "Equipo prefapp <info@prefapp.in>"
+
+version: 0.1
+
+category: library
+
+
+construcciones:
+  
+  letsencrypt:
+    image: quay.io/letsencrypt/letsencrypt:latest
+    entrypoint: ""
+    command: 'bash -c "sleep 6 && certbot certonly --standalone --domains $LETSENCRYPT_DOMAINS --text --agree-tos --email $LETSENCRYPT_EMAIL --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --keep --standalone-supported-challenges http-01 && rm -rf /etc/letsencrypt/live/default && ln -sf /etc/letsencrypt/live/$LETSENCRYPT_PRINCIPAL /etc/letsencrypt/live/default ; tail -f /dev/null"'
+    volumes:
+      - '/root/letsencrypt:/etc/letsencrypt'
+      - '/var/lib/letsencrypt'
+    expose:
+      - "80"
+      - "443"
+    environment:
+      - TERM=xterm
+      - LETSENCRYPT_DOMAINS="#{domains}"
+      - LETSENCRYPT_PRINCIPAL="#{principal}"
+      - LETSENCRYPT_EMAIL="#{email}"
+    
+    parameters:
+      domains:
+        variable:
+          display_name: "Listado de dominios, separados por comas, a incluir en el certificado (deben resolver al servidor de despliegue)"
+          validations:
+            predefined: "domain"
+          default_value: ""
+          required: 1
+        user_provided: 1
+
+      principal:
+        variable:
+          display_name: "Del listado de dominios, indicar el dominio principal"
+          validations:
+            predefined: "domain"
+          default_value: ""
+          required: 1
+        user_provided: 1
+
+      email:
+        variable:
+          display_name: "Email para recibir notificaciones de letsencrypt"
+          validations:
+            predefined: "email"
+          default_value: "info@prefapp.in"
+        user_provided: 1
+      
+    conditional:
+      attribute: 'app:use_ssl'
+      value: 'yes'
+  
+  proxy-ssl:
+    command: /root/start.sh
+    volumes_from:
+      - letsencrypt
+    links:
+      - app:site0
+      - letsencrypt:letsencrypt
+    ports:
+      - 443:443
+      - 80:80
+    image: prefapp/proxy-ssl-letsencrypt
+    
+    conditional:
+      attribute: 'app:use_ssl'
+      value: 'yes'
