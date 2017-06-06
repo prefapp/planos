@@ -1,0 +1,304 @@
+---
+name: app_nodejs
+description: ''
+parameters:
+-   name: riyic/updates_check_interval
+    display_name: Updates check interval
+    description: How often check for update with central server (1min,2h,3d)
+    field_type: text
+    validations:
+        regex: "(?-mix:^(never)|\\d+(min|h|d)?)"
+    default_value: never
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_locale
+    display_name: System locale settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^(C|POSIX|[a-z]{2,3}\\_[a-z]{2})\\.?[a-z0-9\\-]{0,10}$)"
+    default_value: en_US.UTF-8
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/enable_report
+    display_name: Enable chef convergence report
+    description: Enable delivery of chef convergence report to riyic
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/install_runit_inside_container
+    display_name: Installs runit inside container
+    description: Installs runit if chef is running inside container?
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'yes'
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: riyic/system_timezone
+    display_name: System timezone settings
+    description: Default system locale for this system
+    field_type: text
+    validations:
+        regex: "(?i-mx:^\\w+\\/\\w+$)"
+    default_value: Europe/Madrid
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: riyic::default
+-   name: app/nodejs/env_vars
+    display_name: Application config vars from environment
+    description: Application configuration variables passed through environment
+    field_type: hash_input
+    validations:
+        predefined: text
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: hash
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/target_path
+    display_name: Application deployment folder
+    description: The application will be deployed to this folder
+    field_type: text
+    validations:
+        predefined: unix_path
+    default_value: "/home/owner/my_app"
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/entry_point
+    display_name: Application entry point script
+    description: Script to start the application
+    field_type: text
+    validations:
+        predefined: unix_path
+    default_value: index.js
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/owner
+    display_name: Deployment owner
+    description: User that shall own the target path
+    field_type: text
+    validations:
+        predefined: username
+    default_value: owner
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/group
+    display_name: Deployment group
+    description: The group that shall own the target path
+    field_type: text
+    validations:
+        predefined: username
+    default_value: ownergrp
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/repo_url
+    display_name: Repository source code url
+    description: Repository url from which to download source code
+    field_type: text
+    validations:
+        predefined: url
+    default_value: http://my-repo-url.com
+    calculated: 0
+    required: 1
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/repo_type
+    display_name: Repository type
+    description: Repository type from which to download application code
+    field_type: radio
+    validations:
+        fixed_values:
+        - git
+        - subversion
+        - remote_archive
+    default_value: git
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/revision
+    display_name: Application Repository revision
+    description: Application repository tag/branch/commit/archive_name to download
+    field_type: text
+    validations:
+        predefined: revision
+    default_value: HEAD
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/credential
+    display_name: Repository remote user credential
+    description: Application repository remote user credential
+    field_type: textarea
+    validations:
+        predefined: multiline_text
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/migration_command
+    display_name: Migration command
+    description: Command to run to migrate application to current state
+    field_type: text
+    validations:
+        predefined: unix_command
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/extra_modules
+    display_name: Extra npm modules needed
+    description: Extra npm modules needed by the application, globally
+    field_type: array_input
+    validations:
+        predefined: package_name
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: array
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/extra_packages
+    display_name: Extra system packages
+    description: Extra system packages needed by the application
+    field_type: array_input
+    validations:
+        predefined: package_name
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: array
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/postdeploy_script
+    display_name: Bash script with extra tasks to run
+    description: Script with extra tasks to run after deploy (relative path from target_path)
+    field_type: text
+    validations:
+        predefined: unix_path
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/purge_target_path
+    display_name: Delete target_path folder before deploy
+    description: Delete 'target_path' folder before download application code
+    field_type: radio
+    validations:
+        fixed_values:
+        - 'yes'
+        - 'no'
+    default_value: 'no'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: app/nodejs/repo_depth
+    display_name: Number of past revisions to download (git)
+    description: The number of past revisions that will be included in the git shallow
+        clone. The default behavior will do a full clone.
+    field_type: text
+    validations:
+        predefined: int
+    default_value: '0'
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_nodejs::node_app
+-   name: lang/nodejs/version
+    display_name: Nodejs version (latest = last version, legacy = previous)
+    description: Nodejs version to install
+    field_type: text
+    validations:
+        regex: "(?-mix:^(latest|legacy|\\d+\\.\\d+\\.\\d+)$)"
+    default_value: latest
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: lang_nodejs::default
+-   name: lang/nodejs/packages
+    display_name: Npm modules to install globally
+    description: Node modules to install (with npm) globally
+    field_type: array_input
+    validations:
+        predefined: node_module
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: array
+    active: 1
+    recipe: lang_nodejs::default
+recipes:
+- riyic::default
+- app_nodejs::node_app
+- lang_nodejs::default
