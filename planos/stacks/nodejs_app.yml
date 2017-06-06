@@ -6,7 +6,7 @@ version: 0.1
 
 descripcion: >
 
-  Stack básica de una app nodejs
+  Stack para una app nodejs
 
 category: stack
 tags:
@@ -95,12 +95,12 @@ construcciones:
 
 
       # automatic definition in template
-      domain:
-        riyic:
-          name: "app/nodejs/domain"
-          recipe: "app_nodejs::app"
-        value: "default"
-        #user_provided: 1
+      #domain:
+      #  riyic:
+      #    name: "app/nodejs/domain"
+      #    recipe: "app_nodejs::app"
+      #  value: "default"
+      #  #user_provided: 1
 
       target_path:
         riyic:
