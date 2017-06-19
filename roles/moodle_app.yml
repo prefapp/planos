@@ -1,6 +1,6 @@
 ---
-name: wordpress
-description: Rol de la app wordpress
+name: moodle_app
+description: Rol del container de aplicación para Moodle
 parameters:
 -   name: riyic/updates_check_interval
     display_name: Updates check interval
@@ -71,7 +71,24 @@ parameters:
     data_type: string
     active: 1
     recipe: riyic::default
--   name: app/wordpress/domain
+-   name: lang/php/version
+    display_name: 'php version to install '
+    description: PHP version to install
+    field_type: radio
+    validations:
+        fixed_values:
+        - '5.5'
+        - '5.6'
+        - '7.0'
+        - '7.1'
+    default_value: '7.1'
+    calculated: 0
+    required: 0
+    advanced: 0
+    data_type: string
+    active: 1
+    recipe: lang_php::default
+-   name: app/moodle/domain
     display_name: Application domain
     description: Domain associated to app virtual host
     field_type: text
@@ -83,8 +100,8 @@ parameters:
     advanced: 0
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/alias
+    recipe: app_moodle::deploy
+-   name: app/moodle/alias
     display_name: Application domain alias
     description: Other domains associated to app virtual host
     field_type: array_input
@@ -96,8 +113,8 @@ parameters:
     advanced: 1
     data_type: array
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/db_host
+    recipe: app_moodle::deploy
+-   name: app/moodle/db_host
     display_name: Database host
     description: Database host
     field_type: text
@@ -109,34 +126,34 @@ parameters:
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/db_name
+    recipe: app_moodle::deploy
+-   name: app/moodle/db_name
     display_name: Database name
     description: Database Name
     field_type: text
     validations:
         predefined: mysql_dbname
-    default_value: wordpress_db
+    default_value: moodle_db
     calculated: 0
     required: 1
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/db_user
+    recipe: app_moodle::deploy
+-   name: app/moodle/db_user
     display_name: Database username
     description: Database related user
     field_type: text
     validations:
         predefined: mysql_dbuser
-    default_value: wordpress_user
+    default_value: moodle_user
     calculated: 0
     required: 1
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/db_password
+    recipe: app_moodle::deploy
+-   name: app/moodle/db_password
     display_name: Database user password
     description: Database user password
     field_type: text
@@ -148,34 +165,67 @@ parameters:
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/target_path
+    recipe: app_moodle::deploy
+-   name: app/moodle/db_type
+    display_name: Database type
+    description: 'Database type valid values: pgsql, mysqli, mariadb, mssql, sqlsrv,
+        oci'
+    field_type: radio
+    validations:
+        fixed_values:
+        - pgsql
+        - mariadb
+        - mysqli
+        - mssql
+        - sqlsrv
+        - oci
+    default_value: pgsql
+    calculated: 0
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_moodle::deploy
+-   name: app/moodle/target_path
     display_name: Application deployment folder
     description: The application will be deployed to this folder
     field_type: text
     validations:
         predefined: unix_path
-    default_value: "/home/wordpress"
+    default_value: "/home/moodle/public"
     calculated: 0
     required: 0
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/user
+    recipe: app_moodle::deploy
+-   name: app/moodle/datadir
+    display_name: Moodle data directory
+    description: The directory where moodle store data
+    field_type: text
+    validations:
+        predefined: unix_path
+    default_value: "/home/moodle/moodledata"
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_moodle::deploy
+-   name: app/moodle/user
     display_name: Deployment owner
     description: User that shall own the target path
     field_type: text
     validations:
         predefined: username
-    default_value: wordpress
+    default_value: moodle
     calculated: 0
     required: 0
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/group
+    recipe: app_moodle::deploy
+-   name: app/moodle/group
     display_name: Deployment group
     description: The group that shall own the target path
     field_type: text
@@ -187,8 +237,8 @@ parameters:
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/smtp_server
+    recipe: app_moodle::deploy
+-   name: app/moodle/smtp_server
     display_name: Smtp host
     description: Smtp server to use to send emails, empty to localhost
     field_type: text
@@ -200,8 +250,8 @@ parameters:
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/smtp_user
+    recipe: app_moodle::deploy
+-   name: app/moodle/smtp_user
     display_name: Smtp username
     description: Smtp server login account
     field_type: text
@@ -213,8 +263,8 @@ parameters:
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/smtp_password
+    recipe: app_moodle::deploy
+-   name: app/moodle/smtp_password
     display_name: Smtp user password
     description: Smtp server account password
     field_type: text
@@ -226,8 +276,8 @@ parameters:
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: app/wordpress/smtp_server_secure
+    recipe: app_moodle::deploy
+-   name: app/moodle/smtp_server_secure
     display_name: Enable SMTP secure connection?
     description: Use TLS in smtp server connection
     field_type: radio
@@ -241,25 +291,34 @@ parameters:
     advanced: 1
     data_type: string
     active: 1
-    recipe: app_wordpress::deploy
--   name: lang/php/version
-    display_name: 'php version to install '
-    description: PHP version to install
-    field_type: radio
+    recipe: app_moodle::deploy
+-   name: app/moodle/admin_user
+    display_name: Admin user
+    description: Admin user name
+    field_type: text
     validations:
-        fixed_values:
-        - '5.5'
-        - '5.6'
-        - '7.0'
-        - '7.1'
-    default_value: '5.5'
+        predefined: username
+    default_value: admin
     calculated: 0
-    required: 0
-    advanced: 0
+    required: 1
+    advanced: 1
     data_type: string
     active: 1
-    recipe: lang_php::default
+    recipe: app_moodle::deploy
+-   name: app/moodle/admin_password
+    display_name: Admin user password
+    description: Admin user password
+    field_type: text
+    validations:
+        predefined: password
+    default_value: 
+    calculated: 1
+    required: 1
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_moodle::deploy
 recipes:
 - riyic::default
-- app_wordpress::deploy
 - lang_php::default
+- app_moodle::deploy
