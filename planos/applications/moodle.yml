@@ -63,6 +63,13 @@ construcciones:
           name: "app/moodle/admin_password"
           recipe: "app_moodle::deploy"
 
+      max_upload_size:
+        user_provided: 1
+        riyic:
+          name: "app/moodle/max_upload_size"
+          recipe: "app_moodle::deploy"
+
+
 
       # 
       # a partir de aqui xa non son user_provided
