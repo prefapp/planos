@@ -62,6 +62,13 @@ construcciones:
         riyic:
           name: "app/moodle/admin_password"
           recipe: "app_moodle::deploy"
+      
+      admin_email:
+        user_provided: 1
+        riyic:
+          name: "app/moodle/admin_email"
+          recipe: "app_moodle::deploy"
+
 
       max_upload_size:
         user_provided: 1
