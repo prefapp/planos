@@ -318,6 +318,19 @@ parameters:
     data_type: string
     active: 1
     recipe: app_moodle::deploy
+-   name: app/moodle/max_upload_size
+    display_name: Maximum upload size
+    description: Max size of uploadable file in MB
+    field_type: text
+    validations:
+        predefined: int
+    default_value: 
+    calculated: 0
+    required: 0
+    advanced: 1
+    data_type: string
+    active: 1
+    recipe: app_moodle::deploy
 recipes:
 - riyic::default
 - lang_php::default
