@@ -2,7 +2,7 @@ nombre: wordpress
 
 autor: "Equipo PrefApp"
 
-version: 0.2
+version: 0.1
 
 descripcion: >
   CMS por excelencia para la creación de blogs o webs de contenidos
@@ -32,18 +32,19 @@ construcciones:
  
     environment: 
       WP_CONTENT_DIR: "#{target_path}/wp-content"
-      WP_DB_NAME: "#{db_name}"
-      WP_DB_USER: "#{db_user}"
-      WP_DB_PASSWORD: "#{db_password}"
-      WP_DB_HOST: "#{db_host}"
-      WP_CACHE: "#{enable_wp_cache}"
-      DISABLE_WP_CRON: "#{disable_wp_cron}"
-      WP_MEMORY_LIMIT: "#{wp_memory_limit}"
-      WP_SITEURL: "#{wp_siteurl}"
 
     parameters:      
       
+#      php_version:
+#        user_provided: 1
+#
+#        riyic:
+#
+#          name: "lang/php/version"
+#          recipe: "lang_php::default"
+
       domain:
+
         user_provided: 1
 
         riyic:
@@ -51,45 +52,12 @@ construcciones:
           recipe: "app_wordpress::deploy"
 
       alias:
+
         user_provided: 1
 
         riyic:
           name: "app/wordpress/alias"
           recipe: "app_wordpress::deploy"
-
-      wp_siteurl:
-        user_provided: 1
-        variable:
-          validations:
-            predefined: url
-
-      wp_memory_limit:
-        user_provided: 1
-        variable:
-          validations:
-            predefined: word
-          default_value: 128M
-
-      enable_wp_cache:
-        user_provided: 1
-        variable:
-          validations:
-            fixed_values: [0,1]
-          default_value: 0
-
-      disable_wp_cron:
-        user_provided: 1
-        variable:
-          validations:
-            fixed_values: [0,1]
-          default_value: 0
-
-      php_version:
-        riyic:
-          name: "lang/php/version"
-          recipe: "lang_php::default"
-        value: "7.1"
-        user_provided: 1
 
       # 
       # a partir de aqui xa non son user_provided
@@ -207,3 +175,4 @@ construcciones:
 
   proxy:
     from: "common:0.1@proxy-http"
+
