@@ -10,14 +10,6 @@ category: application
 
 construcciones: 
 
-  minecraft-data:
-  
-    image: busybox
-  
-    volumes:
-      
-      - /data
-       
   minecraft:
   
     image: "itzg/minecraft-server"
@@ -25,10 +17,10 @@ construcciones:
     ports:
   
       - "#{puerto}:25565"
-  
-    volumes_from: 
-  
-      - minecraft-data
+    
+    volumes:
+      
+      - /data
   
     environment:
       

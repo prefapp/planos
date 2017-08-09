@@ -18,9 +18,6 @@ construcciones:
 
     image: busybox
   
-    volumes:
-
-      - "@{app}#{data_dir}"  
 
   app: 
 
@@ -34,9 +31,9 @@ construcciones:
     links:
       - "db:#{db_host}"
 
-    volumes_from:
+    volumes:
 
-      - app_data
+      - "@{app}#{data_dir}"  
 
     parameters:
 
