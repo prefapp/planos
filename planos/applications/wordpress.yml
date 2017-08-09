@@ -36,7 +36,7 @@ construcciones:
       WP_DB_USER: "#{db_user}"
       WP_DB_PASSWORD: "#{db_password}"
       WP_DB_HOST: "#{db_host}"
-      WP_CACHE: "#{enable_wp_cache}"
+      DISABLE_WP_CACHE: "#{disable_wp_cache}"
       DISABLE_WP_CRON: "#{disable_wp_cron}"
       WP_MEMORY_LIMIT: "#{wp_memory_limit}"
       WP_SITEURL: "#{wp_siteurl}"
@@ -60,29 +60,37 @@ construcciones:
       wp_siteurl:
         user_provided: 1
         variable:
+          display_name: "Wordpress WP_SITEURL variable"
           validations:
             predefined: url
 
       wp_memory_limit:
         user_provided: 1
         variable:
+          display_name: "Wordpress WP_MEMORY_LIMIT variable"
           validations:
             predefined: word
           default_value: 128M
 
-      enable_wp_cache:
+      disable_wp_cache:
         user_provided: 1
         variable:
+          display_name: "Disable WP CACHE"
+          field_type: "radio"
           validations:
-            fixed_values: [0,1]
-          default_value: 0
+            fixed_values: ['yes','no']
+          default_value: 'no'
+          advanced: 1
 
       disable_wp_cron:
         user_provided: 1
         variable:
+          display_name: "Disable WP CRON"
+          field_type: "radio"
           validations:
-            fixed_values: [0,1]
-          default_value: 0
+            fixed_values: ['yes','no']
+          default_value: 'no'
+          advanced: 1
 
       php_version:
         riyic:
