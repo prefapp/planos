@@ -142,7 +142,7 @@ parameters:
     field_type: text
     validations:
         predefined: username
-    default_value: root
+    default_value: owner
     calculated: 0
     required: 0
     advanced: 0
@@ -155,7 +155,7 @@ parameters:
     field_type: text
     validations:
         predefined: username
-    default_value: root
+    default_value: ownergrp
     calculated: 0
     required: 0
     advanced: 1
