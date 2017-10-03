@@ -47,6 +47,7 @@ construcciones:
         riyic:
           name: "app/php/fcgi_apps/[0]/env_vars"
           recipe: "app_php::fcgi_app"
+          default_value: {}
         user_provided: 1
 
       repo_url:
